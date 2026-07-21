@@ -45,29 +45,15 @@ export function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="flex flex-col gap-5">
-            <div className="relative rounded-3xl overflow-hidden h-64 bg-[#D8EDED] shadow-sm">
-              <img
-                src={unsplash("photo-1614940685083-c5409b57da6e", 800, 480)}
-                alt="Saru's Fashion Studio location"
-                className="w-full h-full object-cover object-center opacity-30"
+            <div className="relative rounded-3xl overflow-hidden h-80 bg-[#D8EDED] shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15223.96613641702!2d78.3354992!3d17.4601193!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a16380245f%3A0x1a963c0e6b59ab01!2sSaru%27s%20Fashion%20Studio%20-%20Kondapur!5e0!3m2!1sen!2sin!4v1784640137920!5m2!1sen!2sin"
+                title="Saru's Fashion Studio location"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div className="teal-gradient text-white rounded-full p-4 shadow-xl">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-7 py-3 text-center shadow-lg">
-                  <div className="font-semibold text-[#1A2B2B] text-sm">Saru's Fashion Studio</div>
-                  <div className="text-[#1A2B2B]/55 text-[12px] mt-0.5">Moti Nagar & Kondapur, Hyderabad</div>
-                </div>
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#027071] text-xs font-semibold underline underline-offset-2 hover:text-[#C8A96A] transition-colors"
-                >
-                  Open in Google Maps →
-                </a>
-              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
