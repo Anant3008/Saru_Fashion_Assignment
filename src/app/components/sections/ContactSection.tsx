@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT_DETAILS, unsplash } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
+import emailjs from "@emailjs/browser";
 
 type FormState = {
   name: string;
@@ -22,12 +23,39 @@ const INITIAL_FORM: FormState = {
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm(INITIAL_FORM);
+    
+    try{
+      setLoading(true);
+
+      await emailjs.send(
+        "service_zxq8uju",
+      "template_cg23ylg",
+      {
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        occasion: form.occasion,
+        message: form.message,
+      },
+      "VZu5eooLBTrLzRSMv"
+      );
+
+      setSubmitted(true);
+      setForm(INITIAL_FORM);
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    } catch (error) {
+      console.log("EmailJS Error: ", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -177,8 +205,8 @@ export function ContactSection() {
                   />
                 </div>
 
-                <button type="submit" className="w-full teal-gradient text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all mt-1">
-                  Send Inquiry →
+                <button type="submit" disabled={loading} className="w-full teal-gradient text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all mt-1">
+                  {loading ? "Sending..." : "Send Inquiry -> "}
                 </button>
               </form>
             )}
