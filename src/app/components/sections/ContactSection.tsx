@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { CONTACT_DETAILS, unsplash } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
@@ -19,9 +19,26 @@ const INITIAL_FORM: FormState = {
   message: "",
 };
 
+const MAPS_EMBED_URL =
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15223.96613641702!2d78.3354992!3d17.4601193!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a16380245f%3A0x1a963c0e6b59ab01!2sSaru%27s%20Fashion%20Studio%20-%20Kondapur!5e0!3m2!1sen!2sin!4v1784640137920!5m2!1sen!2sin";
+
+const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
+
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapTimedOut, setMapTimedOut] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      if (!mapLoaded) {
+        setMapTimedOut(true);
+      }
+    }, 5000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [mapLoaded]);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -45,29 +62,37 @@ export function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="flex flex-col gap-5">
-            <div className="relative rounded-3xl overflow-hidden h-64 bg-[#D8EDED] shadow-sm">
-              <img
-                src={unsplash("photo-1614940685083-c5409b57da6e", 800, 480)}
-                alt="Saru's Fashion Studio location"
-                className="w-full h-full object-cover object-center opacity-30"
+            <div className="relative rounded-3xl overflow-hidden h-80 bg-[#D8EDED] shadow-sm">
+              <iframe
+                src={MAPS_EMBED_URL}
+                title="Saru's Fashion Studio location"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                onLoad={() => setMapLoaded(true)}
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div className="teal-gradient text-white rounded-full p-4 shadow-xl">
-                  <MapPin className="w-6 h-6" />
+              {mapTimedOut && !mapLoaded && (
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/95 backdrop-blur-sm px-6 text-center">
+                  <div className="max-w-sm">
+                    <div className="teal-gradient text-white rounded-full p-4 shadow-xl w-fit mx-auto mb-4">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <h3 className="playfair text-xl font-bold text-[#1A2B2B] mb-2">Map preview unavailable</h3>
+                    <p className="text-[#1A2B2B]/60 text-sm leading-relaxed mb-5">
+                      The embedded map is taking too long to load. You can still open the location directly in Google Maps.
+                    </p>
+                    <a
+                      href={MAPS_OPEN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full bg-[#027071] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#015859]"
+                    >
+                      Open in Google Maps
+                    </a>
+                  </div>
                 </div>
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-7 py-3 text-center shadow-lg">
-                  <div className="font-semibold text-[#1A2B2B] text-sm">Saru's Fashion Studio</div>
-                  <div className="text-[#1A2B2B]/55 text-[12px] mt-0.5">Moti Nagar & Kondapur, Hyderabad</div>
-                </div>
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#027071] text-xs font-semibold underline underline-offset-2 hover:text-[#C8A96A] transition-colors"
-                >
-                  Open in Google Maps →
-                </a>
-              </div>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
