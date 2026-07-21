@@ -28,9 +28,9 @@ const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
-<<<<<<< HEAD
+  
   const [loading, setLoading] = useState(false);
-=======
+
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
 
@@ -43,7 +43,6 @@ export function ContactSection() {
 
     return () => window.clearTimeout(timeoutId);
   }, [mapLoaded]);
->>>>>>> origin/main
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
