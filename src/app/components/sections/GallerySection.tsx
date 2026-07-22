@@ -28,19 +28,19 @@ export function GallerySection() {
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:auto-rows-[220px]">
+          <div className="masonry-grid">
             {GALLERY.map((img, i) => (
               <div
                 key={i}
-                className={`group relative overflow-hidden rounded-[2rem] cursor-pointer border border-white/60 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)] ${
-                  i === 0 || i === 7 ? "md:col-span-2 md:row-span-2 xl:col-span-2 xl:row-span-2" : i === 2 || i === 4 ? "xl:row-span-2" : "xl:row-span-1"
-                }`}
+                className="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer border border-white/60 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)]"
                 onClick={() => setLightbox(img.src)}
               >
                 <ImageWithFallback
                   src={img.src}
                   alt={img.label}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
+                    img.tall ? "aspect-[4/5]" : "aspect-[1/1]"
+                  }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/82 via-[#012f30]/12 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                   <span className="text-white text-sm font-semibold">{img.label}</span>
