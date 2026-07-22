@@ -68,6 +68,11 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Contact", id: "contact" },
 ];
 
+export const CONTACT = {
+  phone: "+919989017733",
+  displayPhone: "+91 99890 17733",
+};
+
 export const SERVICES: ServiceItem[] = [
   {
     emoji: "✂️",

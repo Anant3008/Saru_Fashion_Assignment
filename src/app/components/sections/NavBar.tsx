@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { BrandMark } from "@/app/components/shared/BrandMark";
-import { NAV_ITEMS } from "@/app/content/site";
+import { CONTACT, NAV_ITEMS } from "@/app/content/site";
 
 type NavBarProps = {
   onNavigate: (id: string) => void;
@@ -10,6 +10,7 @@ type NavBarProps = {
 export function NavBar({ onNavigate }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -17,18 +18,47 @@ export function NavBar({ onNavigate }: NavBarProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleNavigate = (id: string) => {
+    setActiveSection(id);
     onNavigate(id);
     setMenuOpen(false);
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/96 backdrop-blur-lg shadow-[0_2px_32px_rgba(2,112,113,0.10)]"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-white/96 backdrop-blur-lg shadow-[0_2px_32px_rgba(2,112,113,0.10)]"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <button onClick={() => handleNavigate("home")} className="flex-shrink-0">
@@ -40,9 +70,12 @@ export function NavBar({ onNavigate }: NavBarProps) {
             <button
               key={id}
               onClick={() => handleNavigate(id)}
-              className={`text-[13px] font-medium transition-colors hover:text-[#027071] ${
-                scrolled ? "text-[#1A2B2B]" : "text-white/90"
-              }`}
+              className={`text-[13px] font-medium transition-colors ${activeSection === id
+                ? "text-[#C8A96A]"
+                : scrolled
+                  ? "text-[#1A2B2B] hover:text-[#027071]"
+                  : "text-white/90 hover:text-[#C8A96A]"
+                }`}
             >
               {label}
             </button>
@@ -51,13 +84,12 @@ export function NavBar({ onNavigate }: NavBarProps) {
 
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+919989017733"
-            className={`text-[13px] font-medium flex items-center gap-1.5 transition-colors hover:text-[#C8A96A] ${
-              scrolled ? "text-[#027071]" : "text-white/90"
-            }`}
+            href={`tel:${CONTACT.phone}`}
+            className={`text-[13px] font-medium flex items-center gap-1.5 transition-colors hover:text-[#C8A96A] ${scrolled ? "text-[#027071]" : "text-white/90"
+              }`}
           >
             <Phone className="w-3.5 h-3.5" />
-            +91 99890 17733
+            {CONTACT.displayPhone}
           </a>
           <button
             onClick={() => handleNavigate("contact")}
@@ -83,7 +115,10 @@ export function NavBar({ onNavigate }: NavBarProps) {
               <button
                 key={id}
                 onClick={() => handleNavigate(id)}
-                className="text-left text-sm font-medium text-[#1A2B2B] hover:text-[#027071] transition-colors py-1 border-b border-[#E8F4F4] last:border-0"
+                className={`text-left text-sm font-medium transition-colors py-1 border-b border-[#E8F4F4] last:border-0 ${activeSection === id
+                    ? "text-[#027071]"
+                    : "text-[#1A2B2B] hover:text-[#027071]"
+                  }`}
               >
                 {label}
               </button>
@@ -95,10 +130,11 @@ export function NavBar({ onNavigate }: NavBarProps) {
               Book Appointment
             </button>
             <a
-              href="tel:+919989017733"
+              href={`tel:${CONTACT.phone}`}
               className="flex items-center justify-center gap-2 text-[#027071] text-sm font-medium py-2"
             >
-              <Phone className="w-4 h-4" /> +91 99890 17733
+              <Phone className="w-4 h-4" />
+              {CONTACT.displayPhone}
             </a>
           </div>
         </div>
