@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { BrandMark } from "@/app/components/shared/BrandMark";
-import { NAV_ITEMS } from "@/app/content/site";
 import { CONTACT, NAV_ITEMS } from "@/app/content/site";
 
 type NavBarProps = {
@@ -54,11 +53,6 @@ export function NavBar({ onNavigate }: NavBarProps) {
     setMenuOpen(false);
   };
 
-  export const CONTACT = {
-    phone: "+919989017733",
-    displayPhone: "+91 99890 17733",
-  };
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
@@ -76,7 +70,11 @@ export function NavBar({ onNavigate }: NavBarProps) {
             <button
               key={id}
               onClick={() => handleNavigate(id)}
-              className={`text-[13px] font-medium transition-colors hover:text-[#027071] ${scrolled ? "text-[#1A2B2B]" : "text-white/90"
+              className={`text-[13px] font-medium transition-colors ${activeSection === id
+                ? "text-[#C8A96A]"
+                : scrolled
+                  ? "text-[#1A2B2B] hover:text-[#027071]"
+                  : "text-white/90 hover:text-[#C8A96A]"
                 }`}
             >
               {label}
@@ -87,11 +85,7 @@ export function NavBar({ onNavigate }: NavBarProps) {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href={`tel:${CONTACT.phone}`}
-            className={`text-[13px] font-medium transition-colors ${activeSection === id
-              ? "text-[#C8A96A]"
-              : scrolled
-                ? "text-[#1A2B2B] hover:text-[#027071]"
-                : "text-white/90 hover:text-[#C8A96A]"
+            className={`text-[13px] font-medium flex items-center gap-1.5 transition-colors hover:text-[#C8A96A] ${scrolled ? "text-[#027071]" : "text-white/90"
               }`}
           >
             <Phone className="w-3.5 h-3.5" />
@@ -121,7 +115,10 @@ export function NavBar({ onNavigate }: NavBarProps) {
               <button
                 key={id}
                 onClick={() => handleNavigate(id)}
-                className="text-left text-sm font-medium text-[#1A2B2B] hover:text-[#027071] transition-colors py-1 border-b border-[#E8F4F4] last:border-0"
+                className={`text-left text-sm font-medium transition-colors py-1 border-b border-[#E8F4F4] last:border-0 ${activeSection === id
+                    ? "text-[#027071]"
+                    : "text-[#1A2B2B] hover:text-[#027071]"
+                  }`}
               >
                 {label}
               </button>
