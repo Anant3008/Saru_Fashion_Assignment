@@ -40,12 +40,24 @@ export type ContactDetail = {
   value: string;
 };
 
+export type JustdialProfile = {
+  location: string;
+  rating: string;
+  reviews: string;
+  href: string;
+};
+
 export type BookingContact = {
   label: string;
   value: string;
   href: string;
   color: string;
 };
+
+export const STUDIO_ADDRESS =
+  "1st Floor, Ram Landmark, 244/B, Shirdi Sai St, Sri Ram Nagar, Kondapur, Hyderabad-500084, Telangana";
+
+export const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
 
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", id: "home" },
@@ -180,31 +192,41 @@ export const GALLERY: GalleryItem[] = [
 ];
 
 export const TRUST_STATS = [
-  { icon: "⭐", value: "4.9 / 5.0", label: "Google Rating" },
+  { icon: "⭐", value: "4.7 / 5.0", label: "Google Rating" },
   { icon: "👗", value: "1,000+", label: "Happy Clients" },
   { icon: "🧵", value: "12+ Years", label: "Expert Craftsmanship" },
-  { icon: "📍", value: "2 Locations", label: "Moti Nagar & Kondapur" },
+  { icon: "📍", value: "Kondapur", label: "Hyderabad Studio" },
 ];
 
 export const ABOUT_STATS = [
   { value: "1,000+", label: "Happy Clients" },
   { value: "50+", label: "Bridal Collections" },
   { value: "100%", label: "Custom Stitching" },
-  { value: "4.9 ★", label: "Google Rating" },
+  { value: "4.7 ★", label: "Google Rating" },
 ];
 
 export const BOOKING_CONTACTS: BookingContact[] = [
-  { label: "WhatsApp", value: "+91 98765 43210", href: "https://wa.me/919876543210", color: "#25D366" },
-  { label: "Call Us", value: "+91 98765 43210", href: "tel:+919876543210", color: "#027071" },
-  { label: "Instagram", value: "@sarusfashion", href: "https://www.instagram.com/sarusfashionstudio", color: "#E1306C" },
-  { label: "Location", value: "2 Locations", href: "https://maps.google.com", color: "#027071" },
+
+  { label: "WhatsApp", value: "+91 99890 17733", href: "https://wa.me/919989017733", color: "#25D366" },
+  { label: "Call Us", value: "+91 99890 17733", href: "tel:+919989017733", color: "#027071" },
+  { label: "Instagram", value: "@sarusfashionstudio", href: "https://www.instagram.com/sarusfashionstudio", color: "#E1306C" },
+  { label: "Location", value: "Kondapur Studio", href: MAPS_OPEN_URL, color: "#027071" },
 ];
 
 export const CONTACT_DETAILS: ContactDetail[] = [
-  { title: "Call / WhatsApp", value: "+91 98765 43210" },
-  { title: "Email", value: "hello@sarusfashion.com" },
-  { title: "Locations", value: "Moti Nagar & Kondapur" },
+  { title: "Call / WhatsApp", value: "+91 99890 17733" },
+  { title: "Email", value: "sarusfashions@gmail.com" },
+  { title: "Address", value: STUDIO_ADDRESS },
   { title: "Working Hours", value: "Mon–Sat: 10am – 7pm" },
+];
+
+export const JUSTDIAL_PROFILES: JustdialProfile[] = [
+  {
+    location: "Kondapur",
+    rating: "4.7",
+    reviews: "44 ratings",
+    href: "https://www.justdial.com/Hyderabad/Sarus-Fashion-Studio-Kondapur-Kondapur/040PXX40-XX40-250821155351-P3P8_BZDET/reviews",
+  },
 ];
 
 export function unsplash(id: string, w: number, h: number) {
