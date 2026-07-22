@@ -3,7 +3,19 @@
 
   Saru's Fashion Studio is a single-page React storefront built from a Figma design. It presents the boutique as a premium destination for bridal wear, designer blouses, lehenga stitching, ethnic wear, alterations, and consultation services.
 
-  Original design source: https://www.figma.com/design/vPmVG97cHUT2P9VFLlHtUN/Luxury-Fashion-Boutique-Website
+  *Live Deployed Link :* https://saru-fashion-studio.netlify.app/ 
+
+ ## Implementation Summary
+ For this assignment, we focused on designing and developing a modern, responsive website that reflects Saru's Fashion Studio's craftsmanship while providing a clean and intuitive user experience. We researched the business and structured the website to highlight its services, showcase its work through a gallery, and make it easy for potential customers to get in touch. The overall design emphasizes elegant typography, consistent spacing, and a visual hierarchy that guides users naturally through the site.
+
+The website was developed with responsiveness as a priority, ensuring a seamless experience across desktop, tablet, and mobile devices. We implemented smooth scrolling, interactive animations, and a mobile-friendly navigation system to improve usability.
+
+Additionally, we integrated an email inquiry form that allows visitors to contact Saru's Fashion Studio directly from the website. Using EmailJS, customers can submit their name, phone number, email address, service requirement, and message, which are delivered directly to the studio's email inbox without requiring users to open their own email client. This provides a seamless way for potential customers to inquire about services, appointments, or custom tailoring requests while making communication more convenient for both the customer and the business.
+
+<img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/c020f18f-2dee-456c-9301-ce713cfab7b6" />
+
+
+Throughout the project, we prioritized clean, maintainable code and focused on creating a professional digital presence that represents the brand while keeping the interface simple, accessible, and visually appealing. We also paid close attention to responsive layouts, intuitive navigation, and polished UI details to ensure a consistent experience across all devices.
 
   ## Tech Stack
 
