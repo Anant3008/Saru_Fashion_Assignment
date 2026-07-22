@@ -49,7 +49,7 @@ export function GallerySection() {
 
           <div className="text-center mt-12">
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/sarusfashionstudio"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-[#027071] text-[#027071] font-semibold text-sm px-9 py-4 rounded-full hover:bg-[#027071] hover:text-white transition-all duration-200"

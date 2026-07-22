@@ -51,19 +51,19 @@ export function NavBar({ onNavigate }: NavBarProps) {
 
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+919876543210"
+            href="tel:+919989017733"
             className={`text-[13px] font-medium flex items-center gap-1.5 transition-colors hover:text-[#C8A96A] ${
               scrolled ? "text-[#027071]" : "text-white/90"
             }`}
           >
             <Phone className="w-3.5 h-3.5" />
-            +91 98765 43210
+            +91 99890 17733
           </a>
           <button
             onClick={() => handleNavigate("contact")}
             className="gold-gradient text-[#1A2B2B] text-[13px] font-semibold px-5 py-2.5 rounded-full hover:opacity-90 hover:shadow-lg transition-all hover:-translate-y-px"
           >
-            Book Consultation
+            Book Appointment
           </button>
         </div>
 
@@ -92,13 +92,13 @@ export function NavBar({ onNavigate }: NavBarProps) {
               onClick={() => handleNavigate("contact")}
               className="gold-gradient text-[#1A2B2B] text-sm font-semibold px-6 py-3.5 rounded-full mt-2 text-center"
             >
-              Book Consultation
+              Book Appointment
             </button>
             <a
-              href="tel:+919876543210"
+              href="tel:+919989017733"
               className="flex items-center justify-center gap-2 text-[#027071] text-sm font-medium py-2"
             >
-              <Phone className="w-4 h-4" /> +91 98765 43210
+              <Phone className="w-4 h-4" /> +91 99890 17733
             </a>
           </div>
         </div>
