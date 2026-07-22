@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Clock, Mail, MapPin, Phone, LoaderCircle } from "lucide-react";
-import { CONTACT_DETAILS, unsplash } from "@/app/content/site";
+import { Clock, ExternalLink, Mail, MapPin, Phone, LoaderCircle, Star } from "lucide-react";
+import { CONTACT_DETAILS, JUSTDIAL_PROFILES, MAPS_OPEN_URL, STUDIO_ADDRESS } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
 import emailjs from "@emailjs/browser";
 
@@ -23,22 +23,18 @@ const INITIAL_FORM: FormState = {
 const MAPS_EMBED_URL =
   "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15223.96613641702!2d78.3354992!3d17.4601193!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93a16380245f%3A0x1a963c0e6b59ab01!2sSaru%27s%20Fashion%20Studio%20-%20Kondapur!5e0!3m2!1sen!2sin!4v1784640137920!5m2!1sen!2sin";
 
-const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
-
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
-
   const [loading, setLoading] = useState(false);
-
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-
   const [errors, setErrors] = useState({
     phone: "",
     email: "",
-  })
+  });
+
+  const quickDetails = CONTACT_DETAILS.filter((info) => info.title !== "Address");
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -61,9 +57,7 @@ export function ContactSection() {
       newErrors.phone = "Enter a valid 10-digit phone number.";
       isValid = false;
     }
-    if (
-      form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
-    ) {
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       newErrors.email = "Enter a valid email address.";
       isValid = false;
     }
@@ -72,11 +66,8 @@ export function ContactSection() {
     return isValid;
   };
 
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    setHasSubmitted(true);
 
     if (!validateForm()) return;
 
@@ -99,13 +90,6 @@ export function ContactSection() {
       setSubmitted(true);
       setForm(INITIAL_FORM);
 
-      setErrors({
-        phone: "",
-        email: "",
-      });
-
-      setHasSubmitted(false);
-
       setTimeout(() => {
         setSubmitted(false);
       }, 4000);
@@ -118,9 +102,9 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#FAFDFB]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="contact" className="py-20 md:py-24 bg-[#FAFDFB]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 md:mb-16">
           <SectionLabel>Get in Touch</SectionLabel>
           <h2 className="playfair font-bold text-[#1A2B2B] mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
             Visit Our Studio
@@ -130,9 +114,9 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 lg:items-start">
           <div className="flex flex-col gap-5">
-            <div className="relative rounded-3xl overflow-hidden h-80 bg-[#D8EDED] shadow-sm">
+            <div className="relative rounded-3xl overflow-hidden h-[320px] bg-[#D8EDED] shadow-sm">
               <iframe
                 src={MAPS_EMBED_URL}
                 title="Saru's Fashion Studio location"
@@ -165,32 +149,93 @@ export function ContactSection() {
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {CONTACT_DETAILS.map((info, i) => {
+            <div className="rounded-3xl border border-[#E8F4F4] bg-white p-5 sm:p-6 shadow-[0_8px_30px_rgba(2,112,113,0.06)]">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#027071] text-white shadow-[0_10px_24px_rgba(2,112,113,0.22)]">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#027071]/65">Studio Address</div>
+                    <h3 className="playfair mt-1 text-2xl sm:text-3xl font-bold leading-tight text-[#1A2B2B]">
+                      Saru's Fashion Studio, Kondapur
+                    </h3>
+                    <p className="mt-2 max-w-xl text-[14px] font-medium leading-relaxed text-[#1A2B2B]/70">{STUDIO_ADDRESS}</p>
+                  </div>
+                </div>
+
+                <a
+                  href={MAPS_OPEN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#027071] px-5 py-3 text-[12px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#015859] hover:shadow-lg sm:w-fit sm:flex-shrink-0"
+                >
+                  Get directions
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3">
+              {quickDetails.map((info, i) => {
                 const icon =
                   info.title === "Call / WhatsApp" ? <Phone className="w-4 h-4 text-[#027071]" /> :
                     info.title === "Email" ? <Mail className="w-4 h-4 text-[#027071]" /> :
-                      info.title === "Locations" ? <MapPin className="w-4 h-4 text-[#027071]" /> :
-                        <Clock className="w-4 h-4 text-[#027071]" />;
+                      <Clock className="w-4 h-4 text-[#027071]" />;
 
                 return (
                   <div key={i} className="bg-white border border-[#E8F4F4] rounded-2xl p-4 flex gap-3 items-start shadow-sm">
                     <div className="mt-0.5 flex-shrink-0">{icon}</div>
-                    <div>
+                    <div className="min-w-0">
                       <div className="text-[10px] text-[#1A2B2B]/40 mb-0.5 uppercase tracking-wide">{info.title}</div>
-                      <div className="text-[13px] font-medium text-[#1A2B2B]">{info.value}</div>
+                      <div className="text-[13px] font-semibold leading-relaxed text-[#1A2B2B] break-words">{info.value}</div>
                     </div>
                   </div>
                 );
               })}
             </div>
+
+            <div className="bg-[#1A2B2B] border border-[#1A2B2B] rounded-2xl p-5 shadow-sm text-white">
+              <div className="flex flex-col gap-5 min-[560px]:flex-row min-[560px]:items-center min-[560px]:justify-between">
+                <div className="max-w-sm">
+                  <div className="text-[10px] text-[#C8A96A] mb-1 uppercase tracking-wide">Verified profile</div>
+                  <h3 className="playfair text-2xl font-bold leading-tight">Find us on Justdial</h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-white/58">
+                    Check our profile for ratings, directions, photos, and quick inquiries.
+                  </p>
+                </div>
+
+                {JUSTDIAL_PROFILES.map((profile) => (
+                  <a
+                    key={profile.location}
+                    href={profile.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-white/8 p-3 transition-all hover:-translate-y-0.5 hover:bg-white/12 min-[560px]:max-w-[340px]"
+                  >
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-[#C8A96A]/18">
+                      <Star className="h-5 w-5 fill-[#C8A96A] text-[#C8A96A]" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate text-[13px] font-semibold text-white">Saru's Fashion Studio - {profile.location}</div>
+                      <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[12px] text-white/60">
+                        <span>{profile.rating} rating on Justdial</span>
+                        <span className="text-white/25">/</span>
+                        <span>{profile.reviews}</span>
+                      </div>
+                    </div>
+                    <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-[#C8A96A] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-[0_4px_40px_rgba(2,112,113,0.07)] p-8 border border-[#E8F4F4]">
+          <div className="self-start bg-white rounded-3xl shadow-[0_4px_40px_rgba(2,112,113,0.07)] p-6 sm:p-8 border border-[#E8F4F4]">
             <h3 className="playfair text-2xl font-bold text-[#1A2B2B] mb-1.5">Send an Inquiry</h3>
             <p className="text-[#1A2B2B]/45 text-[13px] mb-7">
               We'll respond within 24 hrs — or{" "}
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold">
+              <a href="https://wa.me/919989017733" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold">
                 WhatsApp us
               </a>{" "}
               for instant replies!
@@ -223,7 +268,7 @@ export function ContactSection() {
                     <input
                       type="tel"
                       required
-                      placeholder="9876543210"
+                      placeholder="+91 XXXXX XXXXX"
                       value={form.phone}
                       onChange={(event) => {
                         const value = event.target.value.replace(/\D/g, "");
@@ -233,21 +278,14 @@ export function ContactSection() {
                           phone: value,
                         }));
 
-                        if (hasSubmitted) {
-                          setErrors((prev) => ({
-                            ...prev,
-                            phone:
-                              value.length === 0 ||
-                                /^[6-9]\d{9}$/.test(value)
-                                ? ""
-                                : "Enter a valid 10-digit phone number.",
-                          }));
-                        }
+                        setErrors((prev) => ({
+                          ...prev,
+                          phone: value.length === 0 || /^[6-9]\d{9}$/.test(value) ? "" : "Enter a valid 10-digit phone number.",
+                        }));
                       }}
-
                       className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                     />
-                    {hasSubmitted && errors.phone && (
+                    {errors.phone && (
                       <p className="mt-1 text-xs text-red-500">
                         {errors.phone}
                       </p>
@@ -268,20 +306,18 @@ export function ContactSection() {
                         email: value,
                       }));
 
-                      if (hasSubmitted) {
-                        setErrors((prev) => ({
-                          ...prev,
-                          email:
-                            value === "" ||
-                              /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-                              ? ""
-                              : "Enter a valid email address.",
-                        }));
-                      }
+                      setErrors((prev) => ({
+                        ...prev,
+                        email:
+                          value === "" ||
+                          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                            ? ""
+                            : "Enter a valid email address.",
+                      }));
                     }}
                     className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                   />
-                  {hasSubmitted && errors.email && (
+                  {errors.email && (
                     <p className="mt-1 text-xs text-red-500">
                       {errors.email}
                     </p>

@@ -28,7 +28,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           <div className="flex items-center gap-3 mb-7">
             <div className="h-px w-12 bg-[#C8A96A]" />
             <span className="text-[#C8A96A] text-[11px] tracking-[0.28em] uppercase font-semibold">
-              Moti Nagar & Kondapur, Hyderabad
+              Kondapur, Hyderabad
             </span>
           </div>
 

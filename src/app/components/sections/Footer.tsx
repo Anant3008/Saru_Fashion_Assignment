@@ -1,5 +1,6 @@
 import { Facebook, Instagram, MapPin, MessageCircle, Phone, Clock, Mail } from "lucide-react";
 import { BrandMark } from "@/app/components/shared/BrandMark";
+import { JUSTDIAL_PROFILES, STUDIO_ADDRESS } from "@/app/content/site";
 
 type FooterProps = {
   onNavigate: (id: string) => void;
@@ -9,7 +10,7 @@ export function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="bg-[#161E1E] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[1.1fr_0.8fr_1.3fr] gap-10 mb-14">
           <div>
             <div className="mb-5">
               <BrandMark size="lg" />
@@ -19,9 +20,10 @@ export function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="flex gap-2.5">
               {[
-                { icon: <Instagram className="w-4 h-4" />, href: "https://instagram.com/", label: "Instagram" },
-                { icon: <Facebook className="w-4 h-4" />, href: "https://facebook.com/", label: "Facebook" },
-                { icon: <MessageCircle className="w-4 h-4" />, href: "https://wa.me/919876543210", label: "WhatsApp" },
+                { icon: <Instagram className="w-4 h-4" />, href: "https://www.instagram.com/sarusfashionstudio", label: "Instagram" },
+                { icon: <Facebook className="w-4 h-4" />, href: "https://www.facebook.com/sarusfashions/", label: "Facebook" },
+                { icon: <MessageCircle className="w-4 h-4" />, href: "https://wa.me/919989017733", label: "WhatsApp" },
+                { icon: <span className="text-[10px] font-black leading-none">JD</span>, href: JUSTDIAL_PROFILES[0].href, label: "Justdial" },
               ].map((social, i) => (
                 <a
                   key={i}
@@ -58,35 +60,23 @@ export function Footer({ onNavigate }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] mb-5">Services</h4>
-            <ul className="space-y-3">
-              {["Designer Blouses", "Bridal Wear", "Lehenga Stitching", "Kurti & Ethnic Wear", "Alterations", "Fashion Consultation"].map((service) => (
-                <li key={service}>
-                  <span className="text-white/42 text-[13px]">{service}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
             <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] mb-5">Contact Us</h4>
             <div className="space-y-4">
               <div className="flex gap-3">
                 <MapPin className="w-4 h-4 text-[#C8A96A] flex-shrink-0 mt-0.5" />
                 <span className="text-white/42 text-[13px] leading-relaxed">
-                  Moti Nagar & Kondapur,<br />
-                  Hyderabad, Telangana
+                  {STUDIO_ADDRESS}
                 </span>
               </div>
               <div className="flex gap-3 items-center">
                 <Phone className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
-                  +91 98765 43210
+                <a href="tel:+919989017733" className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
+                  +91 99890 17733
                 </a>
               </div>
               <div className="flex gap-3 items-center">
                 <Mail className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <span className="text-white/42 text-[13px]">hello@sarusfashion.com</span>
+                <span className="text-white/42 text-[13px]">sarusfashions@gmail.com</span>
               </div>
               <div className="flex gap-3 items-center">
                 <Clock className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />

@@ -26,7 +26,7 @@ export function BookingCtaSection({ onNavigate }: BookingCtaSectionProps) {
             Book Your Appointment
           </button>
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919989017733"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#25D366] text-white font-semibold text-sm px-8 py-4 rounded-full hover:bg-[#1fba58] transition-all flex items-center gap-2 hover:shadow-lg"
