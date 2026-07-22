@@ -33,6 +33,7 @@ export function ContactSection() {
 
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const [errors, setErrors] = useState({
     phone: "",
@@ -75,6 +76,8 @@ export function ContactSection() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    setHasSubmitted(true);
+
     if (!validateForm()) return;
 
     try {
@@ -95,6 +98,13 @@ export function ContactSection() {
 
       setSubmitted(true);
       setForm(INITIAL_FORM);
+
+      setErrors({
+        phone: "",
+        email: "",
+      });
+
+      setHasSubmitted(false);
 
       setTimeout(() => {
         setSubmitted(false);
@@ -213,7 +223,7 @@ export function ContactSection() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 XXXXX XXXXX"
+                      placeholder="9876543210"
                       value={form.phone}
                       onChange={(event) => {
                         const value = event.target.value.replace(/\D/g, "");
@@ -223,15 +233,21 @@ export function ContactSection() {
                           phone: value,
                         }));
 
-                        setErrors((prev) => ({
-                          ...prev,
-                          phone: value.length === 0 || /^[6-9]\d{9}$/.test(value) ? "" : "Enter a valid 10-digit phone number.",
-                        }));
+                        if (hasSubmitted) {
+                          setErrors((prev) => ({
+                            ...prev,
+                            phone:
+                              value.length === 0 ||
+                                /^[6-9]\d{9}$/.test(value)
+                                ? ""
+                                : "Enter a valid 10-digit phone number.",
+                          }));
+                        }
                       }}
 
                       className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                     />
-                    {errors.phone && (
+                    {hasSubmitted && errors.phone && (
                       <p className="mt-1 text-xs text-red-500">
                         {errors.phone}
                       </p>
@@ -252,18 +268,20 @@ export function ContactSection() {
                         email: value,
                       }));
 
-                      setErrors((prev) => ({
-                        ...prev,
-                        email:
-                          value === "" ||
-                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-                            ? ""
-                            : "Enter a valid email address.",
-                      }));
+                      if (hasSubmitted) {
+                        setErrors((prev) => ({
+                          ...prev,
+                          email:
+                            value === "" ||
+                              /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                              ? ""
+                              : "Enter a valid email address.",
+                        }));
+                      }
                     }}
                     className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                   />
-                  {errors.email && (
+                  {hasSubmitted && errors.email && (
                     <p className="mt-1 text-xs text-red-500">
                       {errors.email}
                     </p>
