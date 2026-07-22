@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, LoaderCircle } from "lucide-react";
 import { CONTACT_DETAILS, unsplash } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
 import emailjs from "@emailjs/browser";
@@ -28,11 +28,16 @@ const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const [loading, setLoading] = useState(false);
 
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
+
+  const [errors, setErrors] = useState({
+    phone: "",
+    email: "",
+  })
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -44,23 +49,48 @@ export function ContactSection() {
     return () => window.clearTimeout(timeoutId);
   }, [mapLoaded]);
 
+  const validateForm = () => {
+    const newErrors = {
+      phone: "",
+      email: "",
+    };
+
+    let isValid = true;
+    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      newErrors.phone = "Enter a valid 10-digit phone number.";
+      isValid = false;
+    }
+    if (
+      form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+    ) {
+      newErrors.email = "Enter a valid email address.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
-    try{
+
+    if (!validateForm()) return;
+
+    try {
       setLoading(true);
 
       await emailjs.send(
         "service_zxq8uju",
-      "template_cg23ylg",
-      {
-        name: form.name,
-        phone: form.phone,
-        email: form.email,
-        occasion: form.occasion,
-        message: form.message,
-      },
-      "VZu5eooLBTrLzRSMv"
+        "template_cg23ylg",
+        {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          occasion: form.occasion,
+          message: form.message,
+        },
+        "VZu5eooLBTrLzRSMv"
       );
 
       setSubmitted(true);
@@ -129,9 +159,9 @@ export function ContactSection() {
               {CONTACT_DETAILS.map((info, i) => {
                 const icon =
                   info.title === "Call / WhatsApp" ? <Phone className="w-4 h-4 text-[#027071]" /> :
-                  info.title === "Email" ? <Mail className="w-4 h-4 text-[#027071]" /> :
-                  info.title === "Locations" ? <MapPin className="w-4 h-4 text-[#027071]" /> :
-                  <Clock className="w-4 h-4 text-[#027071]" />;
+                    info.title === "Email" ? <Mail className="w-4 h-4 text-[#027071]" /> :
+                      info.title === "Locations" ? <MapPin className="w-4 h-4 text-[#027071]" /> :
+                        <Clock className="w-4 h-4 text-[#027071]" />;
 
                 return (
                   <div key={i} className="bg-white border border-[#E8F4F4] rounded-2xl p-4 flex gap-3 items-start shadow-sm">
@@ -185,9 +215,27 @@ export function ContactSection() {
                       required
                       placeholder="+91 XXXXX XXXXX"
                       value={form.phone}
-                      onChange={(event) => setForm((current) => ({ ...current, phone: event.target.value }))}
+                      onChange={(event) => {
+                        const value = event.target.value.replace(/\D/g, "");
+
+                        setForm((current) => ({
+                          ...current,
+                          phone: value,
+                        }));
+
+                        setErrors((prev) => ({
+                          ...prev,
+                          phone: value.length === 0 || /^[6-9]\d{9}$/.test(value) ? "" : "Enter a valid 10-digit phone number.",
+                        }));
+                      }}
+
                       className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                     />
+                    {errors.phone && (
+                      <p className="mt-1 text-xs text-red-500">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -197,9 +245,29 @@ export function ContactSection() {
                     type="email"
                     placeholder="your@email.com"
                     value={form.email}
-                    onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
+                    onChange={(event) => {
+                      const value = event.target.value;
+                      setForm((current) => ({
+                        ...current,
+                        email: value,
+                      }));
+
+                      setErrors((prev) => ({
+                        ...prev,
+                        email:
+                          value === "" ||
+                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+                            ? ""
+                            : "Enter a valid email address.",
+                      }));
+                    }}
                     className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -232,8 +300,15 @@ export function ContactSection() {
                   />
                 </div>
 
-                <button type="submit" disabled={loading} className="w-full teal-gradient text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all mt-1">
-                  {loading ? "Sending..." : "Send Inquiry -> "}
+                <button type="submit" disabled={loading} className="w-full teal-gradient text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed">
+                  {loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <LoaderCircle className="w-5 h-5 animate-spin" />
+                      Sending...
+                    </span>
+                  ) : (
+                    "Send Inquiry →"
+                  )}
                 </button>
               </form>
             )}
