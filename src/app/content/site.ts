@@ -8,6 +8,10 @@ export type ServiceItem = {
   title: string;
   desc: string;
   badge: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 };
 
 export type TestimonialItem = {
@@ -26,7 +30,7 @@ export type WhyUsItem = {
 };
 
 export type GalleryItem = {
-  id: string;
+  src: string;
   label: string;
   tall: boolean;
 };
@@ -67,39 +71,43 @@ export const NAV_ITEMS: NavItem[] = [
 export const SERVICES: ServiceItem[] = [
   {
     emoji: "✂️",
-    title: "Designer Blouses",
-    desc: "Hand-crafted silk and cotton blouses with intricate embroidery, mirror work, and precision custom fits.",
-    badge: "Most Popular",
+    title: "Blouse & Lehenga Fabrics",
+    desc: "Premium fabrics selected for flawless drape, comfort, and custom stitching across everyday and occasion wear.",
+    badge: "Custom Stitching",
+    image: {
+      src: new URL("../../../Images/C.jpg", import.meta.url).href,
+      alt: "Blouse and lehenga fabrics with detailed embroidery work",
+    },
   },
   {
     emoji: "💍",
-    title: "Bridal Wear",
-    desc: "Breathtaking lehengas, bridal blouses, and silk sarees crafted to make your wedding day unforgettable.",
-    badge: "Premium",
+    title: "Designer Sarees & Lehengas",
+    desc: "Elegant silhouettes, rich textures, and festive drapes tailored for standout celebrations and special events.",
+    badge: "Signature",
+    image: {
+      src: new URL("../../../Images/B.jpg", import.meta.url).href,
+      alt: "Designer lehenga with ornate embellished waist detailing",
+    },
   },
   {
     emoji: "👗",
-    title: "Lehenga Stitching",
-    desc: "Festive and ceremonial lehengas with perfect drape, premium fabrics, and intricate hand detailing.",
-    badge: "",
+    title: "Bridal Blouses",
+    desc: "Statement bridal blouses with refined finishing, supportive fits, and intricate detailing for wedding looks.",
+    badge: "Bridal",
+    image: {
+      src: new URL("../../../Images/E.jpg", import.meta.url).href,
+      alt: "Bridal blouse fabric with decorative border and embroidery",
+    },
   },
   {
     emoji: "🌸",
-    title: "Kurti & Ethnic Wear",
-    desc: "Designer kurtis, anarkalis, and ethnic coordinates stitched to your unique style and comfort.",
-    badge: "",
-  },
-  {
-    emoji: "🪡",
-    title: "Alterations",
-    desc: "Expert alterations that restore and transform your beloved outfits — quick turnaround guaranteed.",
-    badge: "Quick Service",
-  },
-  {
-    emoji: "👑",
-    title: "Fashion Consultation",
-    desc: "Personal styling sessions with our expert designers on fabrics, colours, and silhouettes that suit you.",
-    badge: "By Appointment",
+    title: "Maggam Work & Computer Embroidery",
+    desc: "Fine maggam work, neat computer embroidery, and ornate finishing for a polished, handcrafted finish.",
+    badge: "Fine Detail",
+    image: {
+      src: new URL("../../../Images/A.jpg", import.meta.url).href,
+      alt: "Intricate maggam embroidery on a bright orange fabric",
+    },
   },
 ];
 
@@ -164,14 +172,23 @@ export const WHY_US: WhyUsItem[] = [
 ];
 
 export const GALLERY: GalleryItem[] = [
-  { id: "photo-1617627143750-d86bc21e42bb", label: "Bridal Silk Saree", tall: true },
-  { id: "photo-1618901185975-d59f7091bcfe", label: "Festive Designer Look", tall: false },
-  { id: "photo-1614940685083-c5409b57da6e", label: "Festive Lehenga", tall: true },
-  { id: "photo-1706794831268-d7e99a3c8815", label: "Embroidery Artistry", tall: false },
-  { id: "photo-1572470176170-98fa8abcb741", label: "Classic Silk Drape", tall: true },
-  { id: "photo-1641305534843-b7447fbc1c21", label: "Master Craftsmanship", tall: false },
-  { id: "photo-1739429942851-9083ee185d3d", label: "Signature Style", tall: true },
-  { id: "photo-1743012782311-b37269102c12", label: "Embroidered Work", tall: false },
+  { src: new URL("../../../Collections/C2.jpg", import.meta.url).href, label: "Pattern Detail C2", tall: true },
+  { src: new URL("../../../Collections/C1.jpg", import.meta.url).href, label: "Pattern Detail C1", tall: false },
+  { src: new URL("../../../Collections/B2.jpg", import.meta.url).href, label: "Paisley Panel B2", tall: true },
+  { src: new URL("../../../Collections/B.jpg", import.meta.url).href, label: "Classic Border B", tall: false },
+  { src: new URL("../../../Collections/A2.jpg", import.meta.url).href, label: "Embroidered Patch A2", tall: false },
+  { src: new URL("../../../Collections/A.jpg", import.meta.url).href, label: "Floral Border A", tall: true },
+  { src: new URL("../../../Collections/9.jpeg", import.meta.url).href, label: "Detail 9", tall: false },
+  { src: new URL("../../../Collections/8.jpeg", import.meta.url).href, label: "Detail 8", tall: false },
+  { src: new URL("../../../Collections/7.jpeg", import.meta.url).href, label: "Detail 7", tall: false },
+  { src: new URL("../../../Collections/F.jpg", import.meta.url).href, label: "Floral F", tall: true },
+  { src: new URL("../../../Collections/E.jpg", import.meta.url).href, label: "Saree Waist E", tall: true },
+  { src: new URL("../../../Collections/D.jpg", import.meta.url).href, label: "Neckline D", tall: false },
+  { src: new URL("../../../Collections/C3.jpg", import.meta.url).href, label: "Pattern C3", tall: false },
+  { src: new URL("../../../Collections/H.jpg", import.meta.url).href, label: "Blue Border H", tall: false },
+  { src: new URL("../../../Collections/G.jpg", import.meta.url).href, label: "Mint Blouse G", tall: false },
+  { src: new URL("../../../Collections/J.jpeg", import.meta.url).href, label: "Red Bridal J", tall: true },
+  { src: new URL("../../../Collections/I.jpeg", import.meta.url).href, label: "Intricate I", tall: true },
 ];
 
 export const TRUST_STATS = [
@@ -189,6 +206,7 @@ export const ABOUT_STATS = [
 ];
 
 export const BOOKING_CONTACTS: BookingContact[] = [
+
   { label: "WhatsApp", value: "+91 99890 17733", href: "https://wa.me/919989017733", color: "#25D366" },
   { label: "Call Us", value: "+91 99890 17733", href: "tel:+919989017733", color: "#027071" },
   { label: "Instagram", value: "@sarusfashionstudio", href: "https://www.instagram.com/sarusfashionstudio", color: "#E1306C" },
