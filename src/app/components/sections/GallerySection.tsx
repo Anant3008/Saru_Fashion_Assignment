@@ -29,16 +29,16 @@ export function GallerySection() {
           </div>
 
           <div className="masonry-grid">
-            {GALLERY.map((img, i) => (
+            {GALLERY.slice(0, 8).map((img, i) => (
               <div
                 key={i}
-                className="masonry-item group relative overflow-hidden rounded-2xl cursor-pointer"
+                className={`masonry-item ${img.tall ? "masonry-item--tall" : "masonry-item--short"} group relative overflow-hidden rounded-2xl cursor-pointer`}
                 onClick={() => setLightbox(img.src)}
               >
                 <ImageWithFallback
                   src={img.src}
                   alt={img.label}
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.05] rounded-2xl"
+                  className="masonry-card w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] rounded-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/82 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white text-sm font-semibold">{img.label}</span>

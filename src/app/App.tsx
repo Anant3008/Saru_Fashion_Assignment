@@ -11,10 +11,26 @@ import { BookingCtaSection } from "@/app/components/sections/BookingCtaSection";
 import { ContactSection } from "@/app/components/sections/ContactSection";
 import { Footer } from "@/app/components/sections/Footer";
 import { FloatingWhatsApp } from "@/app/components/sections/FloatingWhatsApp";
+import saruLogo from "@/imports/saru_fashion.jpg";
 
 export default function App() {
   useEffect(() => {
     document.body.style.overflow = "";
+    document.title = "Saru's Fashion Studio";
+
+    const iconId = "saru-favicon";
+    let link = document.querySelector<HTMLLinkElement>(`link#${iconId}`);
+
+    if (!link) {
+      link = document.createElement("link");
+      link.id = iconId;
+      link.rel = "icon";
+      document.head.appendChild(link);
+    }
+
+    link.type = "image/jpeg";
+    link.href = saruLogo;
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -32,10 +48,18 @@ export default function App() {
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(2,112,113,0.28); border-radius: 3px; }
         .playfair { font-family: 'Playfair Display', serif; }
-        .masonry-grid { columns: 4; column-gap: 12px; }
-        @media (max-width: 1024px) { .masonry-grid { columns: 3; } }
-        @media (max-width: 640px) { .masonry-grid { columns: 2; } }
-        .masonry-item { break-inside: avoid; margin-bottom: 12px; display: block; }
+        .masonry-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-auto-rows: 12px;
+          gap: 12px;
+        }
+        @media (max-width: 1024px) { .masonry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 640px) { .masonry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        .masonry-item { display: block; }
+        .masonry-item--tall { grid-row: span 26; }
+        .masonry-item--short { grid-row: span 18; }
+        .masonry-card { min-height: 100%; }
         .hero-pattern {
           background-image: repeating-linear-gradient(
             45deg,

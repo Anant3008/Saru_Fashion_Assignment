@@ -1,7 +1,7 @@
 
-  # Luxury Fashion Boutique Website
+  # Saru's Fashion Studio
 
-  Luxury Fashion Boutique Website is a single-page React storefront built from a Figma design. It presents Saru's Fashion Studio as a premium boutique for bridal wear, designer blouses, lehenga stitching, ethnic wear, alterations, and consultation services.
+  Saru's Fashion Studio is a single-page React storefront built from a Figma design. It presents the boutique as a premium destination for bridal wear, designer blouses, lehenga stitching, ethnic wear, alterations, and consultation services.
 
   Original design source: https://www.figma.com/design/vPmVG97cHUT2P9VFLlHtUN/Luxury-Fashion-Boutique-Website
 
