@@ -67,8 +67,3 @@ Throughout the project, we prioritized clean, maintainable code and focused on c
   - Shared copy, navigation entries, and section data live in `src/app/content/site.ts`.
   - If you add a new section, place it under `src/app/components/sections/` and keep `App.tsx` as the composer.
   - Keep generated build output out of version control. The `.gitignore` already excludes `node_modules/` and `dist/`.
-
-  ## Implementation Summary
-
-  This repo was refactored from a monolithic `App.tsx` into modular sections so development is easier for multiple contributors. That makes it simpler to update one area without touching the whole page.
-  
