@@ -160,91 +160,23 @@ export const WHY_US: WhyUsItem[] = [
 ];
 
 export const GALLERY: GalleryItem[] = [
-  {
-    src: new URL("../../../Collections/A.jpg", import.meta.url).href,
-    label: "Floral Border Embroidery",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/A2.jpg", import.meta.url).href,
-    label: "Bridal Border Accent",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/B.jpg", import.meta.url).href,
-    label: "Maroon Bridal Saree",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/B2.jpg", import.meta.url).href,
-    label: "Paisley Statement Panel",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/C1.jpg", import.meta.url).href,
-    label: "Green Floral Yoke",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/C2.jpg", import.meta.url).href,
-    label: "Diamond Floral Repeat",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/C3.jpg", import.meta.url).href,
-    label: "Peacock Border Detail",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/D.jpg", import.meta.url).href,
-    label: "Royal Neckline Detail",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/E.jpg", import.meta.url).href,
-    label: "Red Bridal Set",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/F.jpg", import.meta.url).href,
-    label: "Glam Belt Embellishment",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/G.jpg", import.meta.url).href,
-    label: "Mint Embroidery Blouse",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/H.jpg", import.meta.url).href,
-    label: "Blue Silk Border",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/I.jpeg", import.meta.url).href,
-    label: "Lavender Floral Field",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/J.jpeg", import.meta.url).href,
-    label: "Red Bridal Finish",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/7.jpeg", import.meta.url).href,
-    label: "Purple Crest Border",
-    tall: false,
-  },
-  {
-    src: new URL("../../../Collections/8.jpeg", import.meta.url).href,
-    label: "Royal Curve Motif",
-    tall: true,
-  },
-  {
-    src: new URL("../../../Collections/9.jpeg", import.meta.url).href,
-    label: "Emerald Floral Panel",
-    tall: true,
-  },
+  { src: new URL("../../../Collections/C2.jpg", import.meta.url).href, label: "Pattern Detail C2", tall: true },
+  { src: new URL("../../../Collections/C1.jpg", import.meta.url).href, label: "Pattern Detail C1", tall: false },
+  { src: new URL("../../../Collections/B2.jpg", import.meta.url).href, label: "Paisley Panel B2", tall: true },
+  { src: new URL("../../../Collections/B.jpg", import.meta.url).href, label: "Classic Border B", tall: false },
+  { src: new URL("../../../Collections/A2.jpg", import.meta.url).href, label: "Embroidered Patch A2", tall: false },
+  { src: new URL("../../../Collections/A.jpg", import.meta.url).href, label: "Floral Border A", tall: true },
+  { src: new URL("../../../Collections/9.jpeg", import.meta.url).href, label: "Detail 9", tall: false },
+  { src: new URL("../../../Collections/8.jpeg", import.meta.url).href, label: "Detail 8", tall: false },
+  { src: new URL("../../../Collections/7.jpeg", import.meta.url).href, label: "Detail 7", tall: false },
+  { src: new URL("../../../Collections/F.jpg", import.meta.url).href, label: "Floral F", tall: true },
+  { src: new URL("../../../Collections/E.jpg", import.meta.url).href, label: "Saree Waist E", tall: true },
+  { src: new URL("../../../Collections/D.jpg", import.meta.url).href, label: "Neckline D", tall: false },
+  { src: new URL("../../../Collections/C3.jpg", import.meta.url).href, label: "Pattern C3", tall: false },
+  { src: new URL("../../../Collections/H.jpg", import.meta.url).href, label: "Blue Border H", tall: false },
+  { src: new URL("../../../Collections/G.jpg", import.meta.url).href, label: "Mint Blouse G", tall: false },
+  { src: new URL("../../../Collections/J.jpeg", import.meta.url).href, label: "Red Bridal J", tall: true },
+  { src: new URL("../../../Collections/I.jpeg", import.meta.url).href, label: "Intricate I", tall: true },
 ];
 
 export const TRUST_STATS = [

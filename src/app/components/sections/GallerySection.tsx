@@ -32,17 +32,15 @@ export function GallerySection() {
             {GALLERY.map((img, i) => (
               <div
                 key={i}
-                className="masonry-item group relative overflow-hidden rounded-[2rem] cursor-pointer border border-white/60 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)]"
+                className="masonry-item group relative overflow-hidden rounded-2xl cursor-pointer"
                 onClick={() => setLightbox(img.src)}
               >
                 <ImageWithFallback
                   src={img.src}
                   alt={img.label}
-                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
-                    img.tall ? "aspect-[4/5]" : "aspect-[1/1]"
-                  }`}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.05] rounded-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/82 via-[#012f30]/12 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/82 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white text-sm font-semibold">{img.label}</span>
                 </div>
               </div>
