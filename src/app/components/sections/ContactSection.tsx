@@ -3,6 +3,7 @@ import { Clock, ExternalLink, Mail, MapPin, Phone, LoaderCircle, Star } from "lu
 import { CONTACT_DETAILS, JUSTDIAL_PROFILES, MAPS_OPEN_URL, STUDIO_ADDRESS } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
 import emailjs from "@emailjs/browser";
+import type { ContactDetail, JustdialProfile } from "@/app/content/site";
 
 type FormState = {
   name: string;
@@ -10,6 +11,13 @@ type FormState = {
   email: string;
   occasion: string;
   message: string;
+};
+
+type FormErrors = {
+  name: string;
+  phone: string;
+  email: string;
+  occasion: string;
 };
 
 const INITIAL_FORM: FormState = {
@@ -29,12 +37,14 @@ export function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<FormErrors>({
+    name: "",
     phone: "",
     email: "",
+    occasion: "",
   });
 
-  const quickDetails = CONTACT_DETAILS.filter((info) => info.title !== "Address");
+  const quickDetails: ContactDetail[] = CONTACT_DETAILS.filter((info: ContactDetail) => info.title !== "Address");
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -47,12 +57,19 @@ export function ContactSection() {
   }, [mapLoaded]);
 
   const validateForm = () => {
-    const newErrors = {
+    const newErrors: FormErrors = {
+      name: "",
       phone: "",
       email: "",
+      occasion: "",
     };
 
     let isValid = true;
+
+    if (!form.name.trim()) {
+      newErrors.name = "Enter your full name.";
+      isValid = false;
+    }
     if (!/^[6-9]\d{9}$/.test(form.phone)) {
       newErrors.phone = "Enter a valid 10-digit phone number.";
       isValid = false;
@@ -61,7 +78,10 @@ export function ContactSection() {
       newErrors.email = "Enter a valid email address.";
       isValid = false;
     }
-
+    if (!form.occasion) {
+      newErrors.occasion = "Choose an occasion or service.";
+      isValid = false;
+    }
     setErrors(newErrors);
     return isValid;
   };
@@ -177,7 +197,7 @@ export function ContactSection() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3">
-              {quickDetails.map((info, i) => {
+              {quickDetails.map((info: ContactDetail, i: number) => {
                 const icon =
                   info.title === "Call / WhatsApp" ? <Phone className="w-4 h-4 text-[#027071]" /> :
                     info.title === "Email" ? <Mail className="w-4 h-4 text-[#027071]" /> :
@@ -205,7 +225,7 @@ export function ContactSection() {
                   </p>
                 </div>
 
-                {JUSTDIAL_PROFILES.map((profile) => (
+                {JUSTDIAL_PROFILES.map((profile: JustdialProfile) => (
                   <a
                     key={profile.location}
                     href={profile.href}
@@ -250,25 +270,28 @@ export function ContactSection() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Full Name *</label>
                     <input
                       type="text"
-                      required
                       placeholder="Your name"
                       value={form.name}
                       onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-                      className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
+                        errors.name
+                          ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                          : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      }`}
                     />
+                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Phone Number *</label>
                     <input
                       type="tel"
-                      required
-                      placeholder="+91 XXXXX XXXXX"
+                      placeholder="XXXXX XXXXX"
                       value={form.phone}
                       onChange={(event) => {
                         const value = event.target.value.replace(/\D/g, "");
@@ -277,19 +300,14 @@ export function ContactSection() {
                           ...current,
                           phone: value,
                         }));
-
-                        setErrors((prev) => ({
-                          ...prev,
-                          phone: value.length === 0 || /^[6-9]\d{9}$/.test(value) ? "" : "Enter a valid 10-digit phone number.",
-                        }));
                       }}
-                      className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
+                        errors.phone
+                          ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                          : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      }`}
                     />
-                    {errors.phone && (
-                      <p className="mt-1 text-xs text-red-500">
-                        {errors.phone}
-                      </p>
-                    )}
+                    {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
                   </div>
                 </div>
 
@@ -305,32 +323,26 @@ export function ContactSection() {
                         ...current,
                         email: value,
                       }));
-
-                      setErrors((prev) => ({
-                        ...prev,
-                        email:
-                          value === "" ||
-                          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-                            ? ""
-                            : "Enter a valid email address.",
-                      }));
                     }}
-                    className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB]"
+                    className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
+                      errors.email
+                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                    }`}
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {errors.email}
-                    </p>
-                  )}
+                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Occasion / Service *</label>
                   <select
-                    required
                     value={form.occasion}
                     onChange={(event) => setForm((current) => ({ ...current, occasion: event.target.value }))}
-                    className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB] appearance-none"
+                    className={`w-full rounded-xl border px-4 py-3 text-sm transition-all bg-[#FAFDFB] appearance-none focus:outline-none focus:ring-2 ${
+                      errors.occasion
+                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                    }`}
                   >
                     <option value="">Select occasion or service...</option>
                     <option>Bridal Wear</option>
@@ -341,6 +353,7 @@ export function ContactSection() {
                     <option>Fashion Consultation</option>
                     <option>Other</option>
                   </select>
+                  {errors.occasion && <p className="mt-1 text-xs text-red-500">{errors.occasion}</p>}
                 </div>
 
                 <div>
@@ -350,7 +363,7 @@ export function ContactSection() {
                     placeholder="Tell us about your requirements, event date, preferred fabrics, or any questions..."
                     value={form.message}
                     onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-                    className="w-full border border-[#C8E4E4] rounded-xl px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12 transition-all bg-[#FAFDFB] resize-none"
+                    className="w-full rounded-xl border border-[#C8E4E4] px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] resize-none focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12"
                   />
                 </div>
 

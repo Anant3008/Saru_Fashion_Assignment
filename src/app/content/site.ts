@@ -214,7 +214,7 @@ export const CONTACT_DETAILS: ContactDetail[] = [
   { title: "Call / WhatsApp", value: "+91 99890 17733" },
   { title: "Email", value: "sarusfashions@gmail.com" },
   { title: "Address", value: STUDIO_ADDRESS },
-  { title: "Working Hours", value: "Mon–Sat: 10am – 7pm" },
+  { title: "Working Hours", value: "Mon–Sat: 10:30 AM – 9:00 PM | Sun: 11:00 AM – 8:00 PM" },
 ];
 
 export const JUSTDIAL_PROFILES: JustdialProfile[] = [
