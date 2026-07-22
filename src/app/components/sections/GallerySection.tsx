@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Instagram, X } from "lucide-react";
-import { GALLERY, unsplash } from "@/app/content/site";
+import { GALLERY } from "@/app/content/site";
+import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
 
 export function GallerySection() {
@@ -15,7 +16,7 @@ export function GallerySection() {
 
   return (
     <>
-      <section id="gallery" className="py-24 bg-[#FAFDFB]">
+      <section id="gallery" className="py-24 bg-[radial-gradient(circle_at_top,#effaf6_0%,#fafdfb_42%,#eef7f5_100%)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <SectionLabel>Our Work</SectionLabel>
@@ -23,25 +24,26 @@ export function GallerySection() {
               Featured Collection
             </h2>
             <p className="text-[#1A2B2B]/55 text-[15px] max-w-lg mx-auto">
-              A glimpse into the artistry, craftsmanship, and elegance we pour into every creation.
+              A curated look at custom embroidery, blouse finishes, and signature bridal detailing.
             </p>
           </div>
 
-          <div className="masonry-grid">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:auto-rows-[220px]">
             {GALLERY.map((img, i) => (
               <div
                 key={i}
-                className="masonry-item group relative overflow-hidden rounded-2xl cursor-pointer"
-                onClick={() => setLightbox(img.id)}
+                className={`group relative overflow-hidden rounded-[2rem] cursor-pointer border border-white/60 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)] ${
+                  i === 0 || i === 7 ? "md:col-span-2 md:row-span-2 xl:col-span-2 xl:row-span-2" : i === 2 || i === 4 ? "xl:row-span-2" : "xl:row-span-1"
+                }`}
+                onClick={() => setLightbox(img.src)}
               >
-                <img
-                  src={unsplash(img.id, 600, img.tall ? 800 : 480)}
+                <ImageWithFallback
+                  src={img.src}
                   alt={img.label}
-                  className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                  style={{ display: "block" }}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#015859]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-xs font-semibold">{img.label}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/82 via-[#012f30]/12 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                  <span className="text-white text-sm font-semibold">{img.label}</span>
                 </div>
               </div>
             ))}
@@ -49,7 +51,7 @@ export function GallerySection() {
 
           <div className="text-center mt-12">
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/sarusfashionstudio"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-[#027071] text-[#027071] font-semibold text-sm px-9 py-4 rounded-full hover:bg-[#027071] hover:text-white transition-all duration-200"
@@ -67,7 +69,7 @@ export function GallerySection() {
             <X className="w-8 h-8" />
           </button>
           <img
-            src={unsplash(lightbox, 1200, 900)}
+            src={lightbox}
             alt="Gallery preview"
             className="max-w-full max-h-[88vh] object-contain rounded-2xl shadow-2xl"
             onClick={(event) => event.stopPropagation()}
