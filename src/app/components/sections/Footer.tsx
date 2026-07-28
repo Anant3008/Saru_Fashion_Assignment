@@ -1,10 +1,13 @@
 import { Facebook, Instagram, MapPin, MessageCircle, Phone, Clock, Mail } from "lucide-react";
 import { BrandMark } from "@/app/components/shared/BrandMark";
-import { JUSTDIAL_PROFILES, STUDIO_ADDRESS } from "@/app/content/site";
+import { CONTACT, CONTACT_DETAILS, JUSTDIAL_PROFILES, NAV_ITEMS, STUDIO_ADDRESS } from "@/app/content/site";
 
 type FooterProps = {
   onNavigate: (id: string) => void;
 };
+
+const WORKING_HOURS = CONTACT_DETAILS.find((detail) => detail.title === "Working Hours")?.value ?? "";
+const EMAIL = CONTACT_DETAILS.find((detail) => detail.title === "Email")?.value ?? "";
 
 export function Footer({ onNavigate }: FooterProps) {
   return (
@@ -42,14 +45,7 @@ export function Footer({ onNavigate }: FooterProps) {
           <div>
             <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] mb-5">Quick Links</h4>
             <ul className="space-y-3">
-              {[
-                { label: "Home", id: "home" },
-                { label: "About Us", id: "about" },
-                { label: "Services", id: "services" },
-                { label: "Gallery", id: "gallery" },
-                { label: "Testimonials", id: "testimonials" },
-                { label: "Contact", id: "contact" },
-              ].map(({ label, id }) => (
+              {NAV_ITEMS.map(({ label, id }) => (
                 <li key={id}>
                   <button onClick={() => onNavigate(id)} className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
                     {label}
@@ -70,24 +66,24 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex gap-3 items-center">
                 <Phone className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <a href="tel:+919989017733" className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
-                  +91 99890 17733
+                <a href={`tel:${CONTACT.phone}`} className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
+                  {CONTACT.displayPhone}
                 </a>
               </div>
               <div className="flex gap-3 items-center">
                 <Mail className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <span className="text-white/42 text-[13px]">sarusfashions@gmail.com</span>
+                <span className="text-white/42 text-[13px]">{EMAIL}</span>
               </div>
               <div className="flex gap-3 items-center">
                 <Clock className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <span className="text-white/42 text-[13px]">Mon–Sat: 10am – 7pm</span>
+                <span className="text-white/42 text-[13px]">{WORKING_HOURS}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-white/25 text-[11px]">© 2025 Saru's Fashion Studio, Hyderabad. All rights reserved.</span>
+          <span className="text-white/25 text-[11px]">© {new Date().getFullYear()} Saru's Fashion Studio, Hyderabad. All rights reserved.</span>
           <span className="text-white/25 text-[11px]">Crafted with love in Hyderabad ♥</span>
         </div>
       </div>
