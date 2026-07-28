@@ -29,7 +29,7 @@ export function GallerySection() {
           </div>
 
           <div className="masonry-grid">
-            {GALLERY.slice(0, 8).map((img, i) => (
+            {GALLERY.map((img, i) => (
               <div
                 key={i}
                 className={`masonry-item ${img.tall ? "masonry-item--tall" : "masonry-item--short"} group relative overflow-hidden rounded-2xl cursor-pointer`}

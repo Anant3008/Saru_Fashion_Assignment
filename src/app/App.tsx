@@ -49,17 +49,18 @@ export default function App() {
         ::-webkit-scrollbar-thumb { background: rgba(2,112,113,0.28); border-radius: 3px; }
         .playfair { font-family: 'Playfair Display', serif; }
         .masonry-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          grid-auto-rows: 12px;
-          gap: 12px;
+          column-count: 2;
+          column-gap: 16px;
         }
-        @media (max-width: 1024px) { .masonry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-        @media (max-width: 640px) { .masonry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        .masonry-item { display: block; }
-        .masonry-item--tall { grid-row: span 26; }
-        .masonry-item--short { grid-row: span 18; }
-        .masonry-card { min-height: 100%; }
+        @media (min-width: 640px) { .masonry-grid { column-count: 3; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
+        .masonry-item {
+          display: block;
+          width: 100%;
+          margin-bottom: 16px;
+          break-inside: avoid;
+        }
+        .masonry-card { display: block; width: 100%; height: auto; }
         .hero-pattern {
           background-image: repeating-linear-gradient(
             45deg,
