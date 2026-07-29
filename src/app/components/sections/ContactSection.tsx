@@ -128,10 +128,10 @@ export function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 md:mb-16">
           <SectionLabel>Get in Touch</SectionLabel>
-          <h2 className="playfair font-bold text-[#1A2B2B] mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+          <h2 className="playfair font-bold text-foreground mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
             Visit Our Studio
           </h2>
-          <p className="text-[#1A2B2B]/55 text-[15px] max-w-lg mx-auto">
+          <p className="text-foreground/55 text-[15px] max-w-lg mx-auto">
             We'd love to meet you. Drop by our boutique or send an inquiry — we'll respond within 24 hours.
           </p>
         </div>
@@ -154,15 +154,15 @@ export function ContactSection() {
                     <div className="teal-gradient text-white rounded-full p-4 shadow-xl w-fit mx-auto mb-4">
                       <MapPin className="w-6 h-6" />
                     </div>
-                    <h3 className="playfair text-xl font-bold text-[#1A2B2B] mb-2">Map preview unavailable</h3>
-                    <p className="text-[#1A2B2B]/60 text-sm leading-relaxed mb-5">
+                    <h3 className="playfair text-xl font-bold text-foreground mb-2">Map preview unavailable</h3>
+                    <p className="text-foreground/60 text-sm leading-relaxed mb-5">
                       The embedded map is taking too long to load. You can still open the location directly in Google Maps.
                     </p>
                     <a
                       href={MAPS_OPEN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-full bg-[#027071] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#015859]"
+                      className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#015859]"
                     >
                       Open in Google Maps
                     </a>
@@ -174,15 +174,15 @@ export function ContactSection() {
             <div className="rounded-3xl border border-[#E8F4F4] bg-white p-5 sm:p-6 shadow-[0_8px_30px_rgba(2,112,113,0.06)]">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#027071] text-white shadow-[0_10px_24px_rgba(2,112,113,0.22)]">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-[0_10px_24px_rgba(2,112,113,0.22)]">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#027071]/65">Studio Address</div>
-                    <h3 className="playfair mt-1 text-2xl sm:text-3xl font-bold leading-tight text-[#1A2B2B]">
+                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary/65">Studio Address</div>
+                    <h3 className="playfair mt-1 text-2xl sm:text-3xl font-bold leading-tight text-foreground">
                       Saru's Fashion Studio, Kondapur
                     </h3>
-                    <p className="mt-2 max-w-xl text-[14px] font-medium leading-relaxed text-[#1A2B2B]/70">{STUDIO_ADDRESS}</p>
+                    <p className="mt-2 max-w-xl text-[14px] font-medium leading-relaxed text-foreground/70">{STUDIO_ADDRESS}</p>
                   </div>
                 </div>
 
@@ -190,7 +190,7 @@ export function ContactSection() {
                   href={MAPS_OPEN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#027071] px-5 py-3 text-[12px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#015859] hover:shadow-lg sm:w-fit sm:flex-shrink-0"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[12px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#015859] hover:shadow-lg sm:w-fit sm:flex-shrink-0"
                 >
                   Get directions
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -201,26 +201,26 @@ export function ContactSection() {
             <div className="grid gap-3 sm:grid-cols-3">
               {quickDetails.map((info: ContactDetail, i: number) => {
                 const icon =
-                  info.title === "Call / WhatsApp" ? <Phone className="w-4 h-4 text-[#027071]" /> :
-                    info.title === "Email" ? <Mail className="w-4 h-4 text-[#027071]" /> :
-                      <Clock className="w-4 h-4 text-[#027071]" />;
+                  info.title === "Call / WhatsApp" ? <Phone className="w-4 h-4 text-primary" /> :
+                    info.title === "Email" ? <Mail className="w-4 h-4 text-primary" /> :
+                      <Clock className="w-4 h-4 text-primary" />;
 
                 return (
                   <div key={i} className="bg-white border border-[#E8F4F4] rounded-2xl p-4 flex gap-3 items-start shadow-sm">
                     <div className="mt-0.5 flex-shrink-0">{icon}</div>
                     <div className="min-w-0">
-                      <div className="text-[10px] text-[#1A2B2B]/40 mb-0.5 uppercase tracking-wide">{info.title}</div>
-                      <div className="text-[13px] font-semibold leading-relaxed text-[#1A2B2B] break-words">{info.value}</div>
+                      <div className="text-[10px] text-foreground/40 mb-0.5 uppercase tracking-wide">{info.title}</div>
+                      <div className="text-[13px] font-semibold leading-relaxed text-foreground break-words">{info.value}</div>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            <div className="bg-[#1A2B2B] border border-[#1A2B2B] rounded-2xl p-5 shadow-sm text-white">
+            <div className="bg-foreground border border-foreground rounded-2xl p-5 shadow-sm text-white">
               <div className="flex flex-col gap-5 min-[560px]:flex-row min-[560px]:items-center min-[560px]:justify-between">
                 <div className="max-w-sm">
-                  <div className="text-[10px] text-[#C8A96A] mb-1 uppercase tracking-wide">Verified profile</div>
+                  <div className="text-[10px] text-secondary mb-1 uppercase tracking-wide">Verified profile</div>
                   <h3 className="playfair text-2xl font-bold leading-tight">Find us on Justdial</h3>
                   <p className="mt-2 text-[13px] leading-relaxed text-white/58">
                     Check our profile for ratings, directions, photos, and quick inquiries.
@@ -235,8 +235,8 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="group flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-white/8 p-3 transition-all hover:-translate-y-0.5 hover:bg-white/12 min-[560px]:max-w-[340px]"
                   >
-                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-[#C8A96A]/18">
-                      <Star className="h-5 w-5 fill-[#C8A96A] text-[#C8A96A]" />
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-secondary/18">
+                      <Star className="h-5 w-5 fill-secondary text-secondary" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="truncate text-[13px] font-semibold text-white">Saru's Fashion Studio - {profile.location}</div>
@@ -246,7 +246,7 @@ export function ContactSection() {
                         <span>{profile.reviews}</span>
                       </div>
                     </div>
-                    <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-[#C8A96A] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-secondary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 ))}
               </div>
@@ -254,8 +254,8 @@ export function ContactSection() {
           </div>
 
           <div className="self-start bg-white rounded-3xl shadow-[0_4px_40px_rgba(2,112,113,0.07)] p-6 sm:p-8 border border-[#E8F4F4]">
-            <h3 className="playfair text-2xl font-bold text-[#1A2B2B] mb-1.5">Send an Inquiry</h3>
-            <p className="text-[#1A2B2B]/45 text-[13px] mb-7">
+            <h3 className="playfair text-2xl font-bold text-foreground mb-1.5">Send an Inquiry</h3>
+            <p className="text-foreground/45 text-[13px] mb-7">
               We'll respond within 24 hrs — or{" "}
               <a href="https://wa.me/919989017733" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold">
                 WhatsApp us
@@ -266,8 +266,8 @@ export function ContactSection() {
             {submitted ? (
               <div role="status" area-live="polite" className="flex flex-col items-center justify-center py-16 gap-4">
                 <div className="w-16 h-16 rounded-full bg-[#F0F8F8] flex items-center justify-center text-3xl" area-hidden="ture">✅</div>
-                <div className="playfair text-xl font-bold text-[#027071]">Inquiry Sent!</div>
-                <p className="text-[#1A2B2B]/55 text-sm text-center max-w-xs">
+                <div className="playfair text-xl font-bold text-primary">Inquiry Sent!</div>
+                <p className="text-foreground/55 text-sm text-center max-w-xs">
                   Thank you! We'll get back to you within 24 hours. You can also WhatsApp us for a quicker response.
                 </p>
               </div>
@@ -280,7 +280,7 @@ export function ContactSection() {
                 )}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Full Name *</label>
+                    <label htmlFor="contact-name" className="block text-[10px] font-bold text-foreground/50 uppercase tracking-wider mb-2">Full Name *</label>
                     <input
                       id="contact-name"
                       type="text"
@@ -289,15 +289,15 @@ export function ContactSection() {
                       onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
                       aria-invalid={Boolean(errors.name)}
                       aria-describedby={errors.name ? "contact-name-error" : undefined}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.name
-                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-foreground/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.name
+                        ? "border-red-400 text-foreground focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-foreground focus:border-primary focus:ring-primary/12"
                         }`}
                     />
                     {errors.name && <p id="contact-name-error" role="alert" className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Phone Number *</label>
+                    <label className="block text-[10px] font-bold text-foreground/50 uppercase tracking-wider mb-2">Phone Number *</label>
                     <input
                       id="contact-phone"
                       type="tel"
@@ -313,9 +313,9 @@ export function ContactSection() {
                       }}
                       aria-invalid={Boolean(errors.phone)}
                       aria-describedby={errors.phone ? "contact-phone-error" : undefined}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.phone
-                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-foreground/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.phone
+                        ? "border-red-400 text-foreground focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-foreground focus:border-primary focus:ring-primary/12"
                         }`}
                     />
                     {errors.phone && <p id="contact-phone-error" role="alert" className="mt-1 text-xs text-red-500">{errors.phone}</p>}
@@ -323,7 +323,7 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Email Address</label>
+                  <label className="block text-[10px] font-bold text-foreground/50 uppercase tracking-wider mb-2">Email Address</label>
                   <input
                     id="contact-email"
                     type="email"
@@ -338,16 +338,16 @@ export function ContactSection() {
                     }}
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? "contact-email-error" : undefined}
-                    className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.email
-                      ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                      : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                    className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-foreground/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.email
+                      ? "border-red-400 text-foreground focus:border-red-500 focus:ring-red-500/12"
+                      : "border-[#C8E4E4] text-foreground focus:border-primary focus:ring-primary/12"
                       }`}
                   />
                   {errors.email && <p id="contact-email-error" role="alert" className="mt-1 text-xs text-red-500">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Occasion / Service *</label>
+                  <label className="block text-[10px] font-bold text-foreground/50 uppercase tracking-wider mb-2">Occasion / Service *</label>
                   <select
                     id="contact-occasion"
                     value={form.occasion}
@@ -355,8 +355,8 @@ export function ContactSection() {
                     aria-invalid={Boolean(errors.occasion)}
                     aria-describedby={errors.occasion ? "contact-occasion-error" : undefined}
                     className={`w-full rounded-xl border px-4 py-3 text-sm transition-all bg-[#FAFDFB] appearance-none focus:outline-none focus:ring-2 ${errors.occasion
-                      ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                      : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      ? "border-red-400 text-foreground focus:border-red-500 focus:ring-red-500/12"
+                      : "border-[#C8E4E4] text-foreground focus:border-primary focus:ring-primary/12"
                       }`}
                   >
                     <option value="">Select occasion or service...</option>
@@ -372,14 +372,14 @@ export function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Message</label>
+                  <label className="block text-[10px] font-bold text-foreground/50 uppercase tracking-wider mb-2">Message</label>
                   <textarea
                     id="contact-message"
                     rows={4}
                     placeholder="Tell us about your requirements, event date, preferred fabrics, or any questions..."
                     value={form.message}
                     onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-                    className="w-full rounded-xl border border-[#C8E4E4] px-4 py-3 text-sm text-[#1A2B2B] placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] resize-none focus:outline-none focus:border-[#027071] focus:ring-2 focus:ring-[#027071]/12"
+                    className="w-full rounded-xl border border-[#C8E4E4] px-4 py-3 text-sm text-foreground placeholder-foreground/28 transition-all bg-[#FAFDFB] resize-none focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/12"
                   />
                 </div>
 

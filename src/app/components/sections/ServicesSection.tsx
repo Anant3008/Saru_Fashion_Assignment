@@ -8,25 +8,25 @@ export function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <SectionLabel>Custom Stitching for All</SectionLabel>
-          <h2 className="playfair font-bold text-[#1A2B2B] mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+          <h2 className="playfair font-bold text-foreground mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
             Four Signature Services
           </h2>
-          <p className="text-[#1A2B2B]/58 text-[15px] max-w-2xl mx-auto">
+          <p className="text-foreground/58 text-[15px] max-w-2xl mx-auto">
             A tighter, more curated service range focused on fabrics, sarees, bridal blouses, and detailed embroidery work.
           </p>
         </div>
 
-        <div className="mb-8 rounded-[2rem] border border-[#027071]/10 bg-white/80 backdrop-blur-sm px-6 py-5 shadow-[0_14px_45px_rgba(2,112,113,0.08)]">
+        <div className="mb-8 rounded-[2rem] border border-primary/10 bg-white/80 backdrop-blur-sm px-6 py-5 shadow-[0_14px_45px_rgba(2,112,113,0.08)]">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
-              <span className="inline-flex items-center rounded-full bg-[#027071]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#027071]">
+              <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary">
                 Note Point
               </span>
-              <p className="mt-2 text-sm text-[#1A2B2B]/70">
+              <p className="mt-2 text-sm text-foreground/70">
                 Every service is built around custom stitching, careful finishing, and fabric choices that suit the occasion.
               </p>
             </div>
-            <div className="text-sm font-semibold text-[#C8A96A] md:text-right">
+            <div className="text-sm font-semibold text-secondary md:text-right">
               Made to fit, made to flatter, made for the moment.
             </div>
           </div>
@@ -36,7 +36,7 @@ export function ServicesSection() {
           {SERVICES.map((svc, i) => (
             <article
               key={i}
-              className="group overflow-hidden rounded-[2rem] border border-[#027071]/10 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_60px_rgba(2,112,113,0.16)]"
+              className="group overflow-hidden rounded-[2rem] border border-primary/10 bg-white shadow-[0_12px_40px_rgba(2,112,113,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_60px_rgba(2,112,113,0.16)]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <ImageWithFallback
@@ -50,7 +50,7 @@ export function ServicesSection() {
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white backdrop-blur-sm">
                       <svc.icon className="h-5 w-5" strokeWidth={1.75} />
                     </div>
-                    <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#027071] shadow-sm">
+                    <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary shadow-sm">
                       {svc.badge}
                     </span>
                   </div>
@@ -61,7 +61,7 @@ export function ServicesSection() {
               </div>
 
               <div className="p-6">
-                <p className="text-sm leading-relaxed text-[#1A2B2B]/64">
+                <p className="text-sm leading-relaxed text-foreground/64">
                   {svc.desc}
                 </p>
               </div>

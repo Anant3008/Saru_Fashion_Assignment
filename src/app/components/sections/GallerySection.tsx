@@ -20,10 +20,10 @@ export function GallerySection() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-14">
             <SectionLabel>Our Work</SectionLabel>
-            <h2 className="playfair font-bold text-[#1A2B2B] mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+            <h2 className="playfair font-bold text-foreground mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
               Featured Collection
             </h2>
-            <p className="text-[#1A2B2B]/55 text-[15px] max-w-lg mx-auto">
+            <p className="text-foreground/55 text-[15px] max-w-lg mx-auto">
               A curated look at custom embroidery, blouse finishes, and signature bridal detailing.
             </p>
           </div>
@@ -52,7 +52,7 @@ export function GallerySection() {
               href="https://www.instagram.com/sarusfashionstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-[#027071] text-[#027071] font-semibold text-sm px-9 py-4 rounded-full hover:bg-[#027071] hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 border-2 border-primary text-primary font-semibold text-sm px-9 py-4 rounded-full hover:bg-primary hover:text-white transition-all duration-200"
             >
               <Instagram className="w-4 h-4" />
               View More on Instagram

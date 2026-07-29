@@ -27,14 +27,14 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full pt-28 pb-20">
         <div className="max-w-[640px]">
           <div className="flex items-center gap-3 mb-7">
-            <div className="h-px w-12 bg-[#C8A96A]" />
-            <span className="text-[#C8A96A] text-[11px] tracking-[0.28em] uppercase font-semibold">
+            <div className="h-px w-12 bg-secondary" />
+            <span className="text-secondary text-[11px] tracking-[0.28em] uppercase font-semibold">
               Kondapur, Hyderabad
             </span>
           </div>
 
           <h1 className="playfair font-bold text-white leading-[1.15] mb-6" style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.2rem)" }}>
-            Where Tradition Meets <span className="italic text-[#C8A96A]">Contemporary</span> Elegance
+            Where Tradition Meets <span className="italic text-secondary">Contemporary</span> Elegance
           </h1>
 
           <p className="text-white/80 text-[15px] md:text-base leading-relaxed mb-10 max-w-[500px]">
@@ -44,7 +44,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           <div className="flex flex-wrap gap-4">
             <button
               onClick={() => onNavigate("contact")}
-              className="gold-gradient text-[#1A2B2B] font-semibold text-sm px-9 py-4 rounded-full hover:opacity-90 hover:shadow-2xl transition-all hover:-translate-y-0.5 active:translate-y-0"
+              className="taupe-gradient text-foreground font-semibold text-sm px-9 py-4 rounded-full hover:opacity-90 hover:shadow-2xl transition-all hover:-translate-y-0.5 active:translate-y-0"
             >
               Book Appointment →
             </button>
