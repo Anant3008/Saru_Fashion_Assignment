@@ -1,4 +1,5 @@
 import { unsplash } from "@/app/content/site";
+import heroImage from "../../../../Collections/I.jpeg";
 
 type HeroSectionProps = {
   onNavigate: (id: string) => void;
@@ -9,8 +10,8 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
     <section id="home" className="relative flex items-center overflow-hidden" style={{ minHeight: "100svh" }}>
       <div className="absolute inset-0 bg-[#111]">
         <img
-          src={unsplash("photo-1617627143750-d86bc21e42bb", 1920, 1200)}
-          alt="Saru's Fashion Studio — Bridal and Designer Ethnic Wear Hyderabad"
+           src={heroImage}
+          alt="Intricate hand embroidery work at Saru's Fashion Studio, Hyderabad"
           className="w-full h-full object-cover object-top opacity-55"
         />
         <div

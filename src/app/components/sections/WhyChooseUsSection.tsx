@@ -19,7 +19,7 @@ export function WhyChooseUsSection() {
           {WHY_US.map((item, i) => (
             <div key={i} className="flex gap-5 items-start group">
               <div className="w-14 h-14 rounded-2xl bg-[#F0F8F8] flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-[#027071] transition-all duration-300 shadow-sm">
-                <span>{item.emoji}</span>
+                <item.icon className="h-6 w-6 text-primary transition-colors duration-300 group-hover:text-white" strokeWidth={1.75} />
               </div>
               <div>
                 <h3 className="font-semibold text-[#1A2B2B] text-[15px] mb-1.5 group-hover:text-[#027071] transition-colors">

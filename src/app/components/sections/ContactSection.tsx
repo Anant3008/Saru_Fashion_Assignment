@@ -34,6 +34,7 @@ const MAPS_EMBED_URL =
 export function ContactSection() {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapTimedOut, setMapTimedOut] = useState(false);
@@ -88,6 +89,7 @@ export function ContactSection() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setSubmitError(false);
 
     if (!validateForm()) return;
 
@@ -95,8 +97,8 @@ export function ContactSection() {
       setLoading(true);
 
       await emailjs.send(
-        "service_zxq8uju",
-        "template_cg23ylg",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name: form.name,
           phone: form.phone,
@@ -104,7 +106,7 @@ export function ContactSection() {
           occasion: form.occasion,
           message: form.message,
         },
-        "VZu5eooLBTrLzRSMv"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setSubmitted(true);
@@ -115,7 +117,7 @@ export function ContactSection() {
       }, 4000);
     } catch (error) {
       console.log("EmailJS Error: ", error);
-      alert("Something went wrong. Please try again.");
+      setSubmitError(true);
     } finally {
       setLoading(false);
     }
@@ -262,8 +264,8 @@ export function ContactSection() {
             </p>
 
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 gap-4">
-                <div className="w-16 h-16 rounded-full bg-[#F0F8F8] flex items-center justify-center text-3xl">✅</div>
+              <div role="status" area-live="polite" className="flex flex-col items-center justify-center py-16 gap-4">
+                <div className="w-16 h-16 rounded-full bg-[#F0F8F8] flex items-center justify-center text-3xl" area-hidden="ture">✅</div>
                 <div className="playfair text-xl font-bold text-[#027071]">Inquiry Sent!</div>
                 <p className="text-[#1A2B2B]/55 text-sm text-center max-w-xs">
                   Thank you! We'll get back to you within 24 hours. You can also WhatsApp us for a quicker response.
@@ -271,25 +273,33 @@ export function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                {submitError && (
+                  <div role="alert" area-live="assertive" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                    Somthing wnt wrong sending your inquiry. Please try again, or WhatsApp us directly.
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Full Name *</label>
+                    <label htmlFor="contact-name" className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Full Name *</label>
                     <input
+                      id="contact-name"
                       type="text"
                       placeholder="Your name"
                       value={form.name}
                       onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
-                        errors.name
-                          ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                          : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
-                      }`}
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "contact-name-error" : undefined}
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.name
+                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                        }`}
                     />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                    {errors.name && <p id="contact-name-error" role="alert" className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Phone Number *</label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       placeholder="XXXXX XXXXX"
                       value={form.phone}
@@ -301,19 +311,21 @@ export function ContactSection() {
                           phone: value,
                         }));
                       }}
-                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
-                        errors.phone
-                          ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                          : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
-                      }`}
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? "contact-phone-error" : undefined}
+                      className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.phone
+                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                        }`}
                     />
-                    {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                    {errors.phone && <p id="contact-phone-error" role="alert" className="mt-1 text-xs text-red-500">{errors.phone}</p>}
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder="your@email.com"
                     value={form.email}
@@ -324,25 +336,28 @@ export function ContactSection() {
                         email: value,
                       }));
                     }}
-                    className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${
-                      errors.email
-                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
-                    }`}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                    className={`w-full rounded-xl border px-4 py-3 text-sm placeholder-[#1A2B2B]/28 transition-all bg-[#FAFDFB] focus:outline-none focus:ring-2 ${errors.email
+                      ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                      : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      }`}
                   />
-                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                  {errors.email && <p id="contact-email-error" role="alert" className="mt-1 text-xs text-red-500">{errors.email}</p>}
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Occasion / Service *</label>
                   <select
+                    id="contact-occasion"
                     value={form.occasion}
                     onChange={(event) => setForm((current) => ({ ...current, occasion: event.target.value }))}
-                    className={`w-full rounded-xl border px-4 py-3 text-sm transition-all bg-[#FAFDFB] appearance-none focus:outline-none focus:ring-2 ${
-                      errors.occasion
-                        ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
-                        : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
-                    }`}
+                    aria-invalid={Boolean(errors.occasion)}
+                    aria-describedby={errors.occasion ? "contact-occasion-error" : undefined}
+                    className={`w-full rounded-xl border px-4 py-3 text-sm transition-all bg-[#FAFDFB] appearance-none focus:outline-none focus:ring-2 ${errors.occasion
+                      ? "border-red-400 text-[#1A2B2B] focus:border-red-500 focus:ring-red-500/12"
+                      : "border-[#C8E4E4] text-[#1A2B2B] focus:border-[#027071] focus:ring-[#027071]/12"
+                      }`}
                   >
                     <option value="">Select occasion or service...</option>
                     <option>Bridal Wear</option>
@@ -353,12 +368,13 @@ export function ContactSection() {
                     <option>Fashion Consultation</option>
                     <option>Other</option>
                   </select>
-                  {errors.occasion && <p className="mt-1 text-xs text-red-500">{errors.occasion}</p>}
+                  {errors.occasion && <p id="contact-occasion-error" role="alert" className="mt-1 text-xs text-red-500">{errors.occasion}</p>}
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-bold text-[#1A2B2B]/50 uppercase tracking-wider mb-2">Message</label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     placeholder="Tell us about your requirements, event date, preferred fabrics, or any questions..."
                     value={form.message}

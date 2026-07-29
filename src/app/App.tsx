@@ -12,6 +12,7 @@ import { ContactSection } from "@/app/components/sections/ContactSection";
 import { Footer } from "@/app/components/sections/Footer";
 import { FloatingWhatsApp } from "@/app/components/sections/FloatingWhatsApp";
 import saruLogo from "@/imports/saru_fashion.jpg";
+import { BackToTop } from "./components/shared/BackToTop";
 
 export default function App() {
   useEffect(() => {
@@ -91,6 +92,7 @@ export default function App() {
       <ContactSection />
       <Footer onNavigate={navigateTo} />
       <FloatingWhatsApp />
+      <BackToTop />
     </div>
   );
 }
