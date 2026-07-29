@@ -214,9 +214,9 @@ export const ABOUT_STATS = [
 export const BOOKING_CONTACTS: BookingContact[] = [
 
   { label: "WhatsApp", value: "+91 99890 17733", href: "https://wa.me/919989017733", color: "#25D366" },
-  { label: "Call Us", value: "+91 99890 17733", href: "tel:+919989017733", color: "#027071" },
+  { label: "Call Us", value: "+91 99890 17733", href: "tel:+919989017733", color: "primary" },
   { label: "Instagram", value: "@sarusfashionstudio", href: "https://www.instagram.com/sarusfashionstudio", color: "#E1306C" },
-  { label: "Location", value: "Kondapur Studio", href: MAPS_OPEN_URL, color: "#027071" },
+  { label: "Location", value: "Kondapur Studio", href: MAPS_OPEN_URL, color: "primary" },
 ];
 
 export const CONTACT_DETAILS: ContactDetail[] = [

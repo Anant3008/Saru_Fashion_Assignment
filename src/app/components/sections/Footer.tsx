@@ -34,7 +34,7 @@ export function Footer({ onNavigate }: FooterProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-full bg-white/8 border border-white/10 flex items-center justify-center hover:bg-[#C8A96A] hover:text-[#1A2B2B] hover:border-[#C8A96A] transition-all duration-200"
+                  className="w-9 h-9 rounded-full bg-white/8 border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-foreground hover:border-secondary transition-all duration-200"
                 >
                   {social.icon}
                 </a>
@@ -47,7 +47,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               {NAV_ITEMS.map(({ label, id }) => (
                 <li key={id}>
-                  <button onClick={() => onNavigate(id)} className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
+                  <button onClick={() => onNavigate(id)} className="text-white/42 text-[13px] hover:text-secondary transition-colors">
                     {label}
                   </button>
                 </li>
@@ -59,23 +59,23 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-[11px] font-bold text-white uppercase tracking-[0.2em] mb-5">Contact Us</h4>
             <div className="space-y-4">
               <div className="flex gap-3">
-                <MapPin className="w-4 h-4 text-[#C8A96A] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
                 <span className="text-white/42 text-[13px] leading-relaxed">
                   {STUDIO_ADDRESS}
                 </span>
               </div>
               <div className="flex gap-3 items-center">
-                <Phone className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
-                <a href={`tel:${CONTACT.phone}`} className="text-white/42 text-[13px] hover:text-[#C8A96A] transition-colors">
+                <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
+                <a href={`tel:${CONTACT.phone}`} className="text-white/42 text-[13px] hover:text-secondary transition-colors">
                   {CONTACT.displayPhone}
                 </a>
               </div>
               <div className="flex gap-3 items-center">
-                <Mail className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
                 <span className="text-white/42 text-[13px]">{EMAIL}</span>
               </div>
               <div className="flex gap-3 items-center">
-                <Clock className="w-4 h-4 text-[#C8A96A] flex-shrink-0" />
+                <Clock className="w-4 h-4 text-secondary flex-shrink-0" />
                 <span className="text-white/42 text-[13px]">{WORKING_HOURS}</span>
               </div>
             </div>

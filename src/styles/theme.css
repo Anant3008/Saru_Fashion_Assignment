@@ -2,80 +2,120 @@
 
 :root {
   --font-size: 16px;
-  --background: #FAFDFB;
-  --foreground: #1A2B2B;
+
+  /* Base */
+  --background: #FBF7F2;
+  --foreground: #2B2927;
+
+
+  /* Cards */
   --card: #FFFFFF;
-  --card-foreground: #1A2B2B;
+  --card-foreground: #2B2927;
+
   --popover: #FFFFFF;
-  --popover-foreground: #1A2B2B;
-  --primary: #027071;
+  --popover-foreground: #2B2927;
+
+
+  /* Brand Colors */
+  --primary: #0F6B6D;
   --primary-foreground: #FFFFFF;
-  --secondary: #C8A96A;
-  --secondary-foreground: #1A2B2B;
-  --muted: #E8F4F4;
-  --muted-foreground: #4A7070;
-  --accent: #E8F4F4;
-  --accent-foreground: #027071;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(2, 112, 113, 0.14);
+
+  /* Warm Taupe */
+  --secondary: #B8A08A;
+  --secondary-foreground: #2B2927;
+
+
+  /* Supporting Colors */
+  --muted: #EFE6DC;
+  --muted-foreground: #6E6258;
+
+  --accent: #E4D5C4;
+  --accent-foreground: #0F6B6D;
+
+
+  /* Status */
+  --destructive: #B42318;
+  --destructive-foreground: #FFFFFF;
+
+
+  /* Borders */
+  --border: rgba(15, 107, 109, 0.12);
+
   --input: transparent;
-  --input-background: #F3FBFB;
-  --switch-background: #cbced4;
+  --input-background: #FFFDFC;
+
+  --switch-background: #D8CEC3;
+
+
+  /* Typography */
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #027071;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+
+
+  /* Focus */
+  --ring: #B8A08A;
+
+
+  /* Charts */
+  --chart-1: #0F6B6D;
+  --chart-2: #B8A08A;
+  --chart-3: #D8C3A5;
+  --chart-4: #6E8F8F;
+  --chart-5: #8A7565;
+
+
+  /* Radius */
   --radius: 1rem;
-  --sidebar: #FFFDFB;
-  --sidebar-foreground: #2B2B2B;
-  --sidebar-primary: #7B2330;
-  --sidebar-primary-foreground: #FFFDFB;
-  --sidebar-accent: #F7E8E8;
-  --sidebar-accent-foreground: #7B2330;
-  --sidebar-border: rgba(123, 35, 48, 0.12);
-  --sidebar-ring: #C8A96A;
+
+
+  /* Sidebar */
+  --sidebar: #FCF8F3;
+  --sidebar-foreground: #2B2927;
+
+  --sidebar-primary: #0F6B6D;
+  --sidebar-primary-foreground: #FFFFFF;
+
+  --sidebar-accent: #EFE6DC;
+  --sidebar-accent-foreground: #0F6B6D;
+
+  --sidebar-border: rgba(184, 160, 138, 0.25);
+  --sidebar-ring: #B8A08A;
 }
 
+
+
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --background: #162626;
+  --foreground: #F7F1EA;
+
+
+  --card: #203131;
+  --card-foreground: #F7F1EA;
+
+  --popover: #203131;
+  --popover-foreground: #F7F1EA;
+
+
+  /* Brand Colors */
+  --primary: #5FA8AA;
+  --primary-foreground: #162626;
+
+  --secondary: #C4AD96;
+  --secondary-foreground: #162626;
+
+
+  --muted: #293A3A;
+  --muted-foreground: #C9BFB5;
+
+  --accent: #3B4745;
+  --accent-foreground: #C4AD96;
+
+
+  --border: rgba(255,255,255,0.12);
+
+  --input: #293A3A;
+
+  --ring: #C4AD96;
 }
 
 @theme inline {

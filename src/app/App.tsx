@@ -42,7 +42,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFDFB] text-[#1A2B2B] overflow-x-hidden" style={{ fontFamily: "'Poppins', sans-serif" }}>
+    <div className="min-h-screen bg-[#FAFDFB] text-foreground overflow-x-hidden" style={{ fontFamily: "'Poppins', sans-serif" }}>
       <style>{`
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 5px; }
@@ -72,8 +72,8 @@ export default function App() {
           );
           background-size: 14px 14px;
         }
-        .gold-gradient { background: linear-gradient(135deg, #C8A96A 0%, #e8c880 50%, #C8A96A 100%); }
-        .teal-gradient { background: linear-gradient(135deg, #027071 0%, #015859 100%); }
+        .taupe-gradient { background: linear-gradient(135deg, #B8A08A, #D8C3A5); }
+        .teal-gradient { background: linear-gradient(135deg, primary, 0%, #015859 100%); }
         .charcoal-section { background: #1E2A2A; }
         .teal-gradient-deep { background: #1E2A2A; }
         @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }

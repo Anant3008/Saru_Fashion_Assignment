@@ -9,7 +9,7 @@ export function TrustBar() {
             <div key={i} className="flex items-center gap-3">
               <item.icon className="h-7 w-7 text-secondary flex-shrink-0" strokeWidth={1.75} />
               <div>
-                <div className="font-bold text-[#C8A96A] text-lg leading-tight">{item.value}</div>
+                <div className="font-bold text-secondary text-lg leading-tight">{item.value}</div>
                 <div className="text-white/60 text-xs mt-0.5">{item.label}</div>
               </div>
             </div>
