@@ -1,5 +1,6 @@
 import { ABOUT_STATS, unsplash } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
+import aboutImage from "../../../../Collections/J.jpeg";
 
 type AboutSectionProps = {
   onNavigate: (id: string) => void;
@@ -12,8 +13,8 @@ export function AboutSection({ onNavigate }: AboutSectionProps) {
         <div className="relative order-2 md:order-1">
           <div className="absolute -top-5 -left-5 w-full h-full border-2 border-[#C8A96A]/55 rounded-3xl pointer-events-none" />
           <img
-            src={unsplash("photo-1618901185975-d59f7091bcfe", 800, 960)}
-            alt="Inside Saru's Fashion Studio, Hyderabad"
+            src={aboutImage}
+            alt="Bridal wear craftsmanship at Saru's Fashion Studio, Hyderabad"
             className="relative w-full h-[480px] md:h-[560px] object-cover object-top rounded-3xl shadow-[0_20px_60px_rgba(2,112,113,0.15)]"
           />
           <div className="absolute -bottom-7 -right-4 md:-right-7 bg-white rounded-2xl shadow-xl px-6 py-5 border border-[#E8F4F4]">

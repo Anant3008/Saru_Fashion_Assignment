@@ -47,7 +47,9 @@ export function ServicesSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#012f30]/72 via-[#012f30]/14 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="text-3xl drop-shadow-sm">{svc.emoji}</div>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white backdrop-blur-sm">
+                      <svc.icon className="h-5 w-5" strokeWidth={1.75} />
+                    </div>
                     <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#027071] shadow-sm">
                       {svc.badge}
                     </span>

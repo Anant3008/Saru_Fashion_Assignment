@@ -1,10 +1,13 @@
+import type { LucideIcon } from "lucide-react";
+import { Scissors, Sparkles, Shirt, Flower2, Ruler, Palette, Layers, Heart, Clock, Gem, Star, Users, Award, MapPin } from "lucide-react";
+
 export type NavItem = {
   label: string;
   id: string;
 };
 
 export type ServiceItem = {
-  emoji: string;
+  icon: LucideIcon;
   title: string;
   desc: string;
   badge: string;
@@ -24,7 +27,7 @@ export type TestimonialItem = {
 };
 
 export type WhyUsItem = {
-  emoji: string;
+  icon: LucideIcon;
   title: string;
   desc: string;
 };
@@ -54,6 +57,12 @@ export type BookingContact = {
   color: string;
 };
 
+export type TrustStat = {
+  icon: LucideIcon;
+  value: string;
+  label: string;
+};
+
 export const STUDIO_ADDRESS =
   "1st Floor, Ram Landmark, 244/B, Shirdi Sai St, Sri Ram Nagar, Kondapur, Hyderabad-500084, Telangana";
 
@@ -75,7 +84,7 @@ export const CONTACT = {
 
 export const SERVICES: ServiceItem[] = [
   {
-    emoji: "✂️",
+    icon: Scissors,
     title: "Blouse & Lehenga Fabrics",
     desc: "Premium fabrics selected for flawless drape, comfort, and custom stitching across everyday and occasion wear.",
     badge: "Custom Stitching",
@@ -85,7 +94,7 @@ export const SERVICES: ServiceItem[] = [
     },
   },
   {
-    emoji: "💍",
+    icon: Sparkles,
     title: "Designer Sarees & Lehengas",
     desc: "Elegant silhouettes, rich textures, and festive drapes tailored for standout celebrations and special events.",
     badge: "Signature",
@@ -95,7 +104,7 @@ export const SERVICES: ServiceItem[] = [
     },
   },
   {
-    emoji: "👗",
+    icon: Shirt,
     title: "Bridal Blouses",
     desc: "Statement bridal blouses with refined finishing, supportive fits, and intricate detailing for wedding looks.",
     badge: "Bridal",
@@ -105,7 +114,7 @@ export const SERVICES: ServiceItem[] = [
     },
   },
   {
-    emoji: "🌸",
+    icon: Flower2,
     title: "Maggam Work & Computer Embroidery",
     desc: "Fine maggam work, neat computer embroidery, and ornate finishing for a polished, handcrafted finish.",
     badge: "Fine Detail",
@@ -168,12 +177,12 @@ export const TESTIMONIALS: TestimonialItem[] = [
 ];
 
 export const WHY_US: WhyUsItem[] = [
-  { emoji: "📐", title: "Perfect Fitting", desc: "Multiple fittings until every outfit feels like it was made for your body" },
-  { emoji: "🎨", title: "Personalized Design", desc: "Every piece crafted uniquely to your style, occasion, and vision" },
-  { emoji: "🧵", title: "Premium Fabrics", desc: "Finest silks, cottons, and designer fabrics sourced with care" },
-  { emoji: "💐", title: "Bridal Specialists", desc: "Dedicated bridal team with 12+ years of wedding wear expertise" },
-  { emoji: "⏱️", title: "Timely Delivery", desc: "We respect your timeline — always delivered when promised" },
-  { emoji: "💎", title: "Affordable Luxury", desc: "Designer quality at honest, transparent prices — no hidden costs" },
+  { icon: Ruler, title: "Perfect Fitting", desc: "Multiple fittings until every outfit feels like it was made for your body" },
+  { icon: Palette, title: "Personalized Design", desc: "Every piece crafted uniquely to your style, occasion, and vision" },
+  { icon: Layers, title: "Premium Fabrics", desc: "Finest silks, cottons, and designer fabrics sourced with care" },
+  { icon: Heart, title: "Bridal Specialists", desc: "Dedicated bridal team with 12+ years of wedding wear expertise" },
+  { icon: Clock, title: "Timely Delivery", desc: "We respect your timeline — always delivered when promised" },
+  { icon: Gem, title: "Affordable Luxury", desc: "Designer quality at honest, transparent prices — no hidden costs" },
 ];
 
 export const GALLERY: GalleryItem[] = [
@@ -188,11 +197,11 @@ export const GALLERY: GalleryItem[] = [
   { src: new URL("../../../Collections/H.jpg", import.meta.url).href, label: "Blue Border H", tall: false },
 ];
 
-export const TRUST_STATS = [
-  { icon: "⭐", value: "4.7 / 5.0", label: "Google Rating" },
-  { icon: "👗", value: "1,000+", label: "Happy Clients" },
-  { icon: "🧵", value: "12+ Years", label: "Expert Craftsmanship" },
-  { icon: "📍", value: "Kondapur", label: "Hyderabad Studio" },
+export const TRUST_STATS: TrustStat[] = [
+  { icon: Star, value: "4.7 / 5.0", label: "Google Rating" },
+  { icon: Users, value: "1,000+", label: "Happy Clients" },
+  { icon: Award, value: "12+ Years", label: "Expert Craftsmanship" },
+  { icon: MapPin, value: "Kondapur", label: "Hyderabad Studio" },
 ];
 
 export const ABOUT_STATS = [
