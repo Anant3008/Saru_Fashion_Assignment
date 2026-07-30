@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import saruLogo from "@/imports/saru_fashion.jpg";
 
 type BrandMarkProps = {

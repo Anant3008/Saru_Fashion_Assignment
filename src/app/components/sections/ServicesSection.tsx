@@ -7,12 +7,12 @@ export function ServicesSection() {
     <section id="services" className="py-24 bg-[linear-gradient(180deg,#F3FAF8_0%,#FAFDFB_48%,#F4F9F9_100%)]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
-          <SectionLabel>Custom Stitching for All</SectionLabel>
+          <SectionLabel>Crafted with Precision</SectionLabel>
           <h2 className="playfair font-bold text-foreground mb-4" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-            Four Signature Services
+            Crafted for Every Occasion
           </h2>
           <p className="text-foreground/58 text-[15px] max-w-2xl mx-auto">
-            A tighter, more curated service range focused on fabrics, sarees, bridal blouses, and detailed embroidery work.
+            Every creation is thoughtfully tailored to celebrate your individuality, blending timeless craftsmanship with elegant design for every special occasion.
           </p>
         </div>
 
@@ -20,10 +20,10 @@ export function ServicesSection() {
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary">
-                Note Point
+                Our Promise
               </span>
               <p className="mt-2 text-sm text-foreground/70">
-                Every service is built around custom stitching, careful finishing, and fabric choices that suit the occasion.
+                Every design is created with careful craftsmanship, premium finishing, and personalized attention to ensure every outfit feels uniquely yours.
               </p>
             </div>
             <div className="text-sm font-semibold text-secondary md:text-right">

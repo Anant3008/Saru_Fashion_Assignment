@@ -1,4 +1,4 @@
-import { ABOUT_STATS, unsplash } from "@/app/content/site";
+import { ABOUT_STATS} from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
 import aboutImage from "../../../../Collections/J.jpeg";
 
@@ -18,9 +18,9 @@ export function AboutSection({ onNavigate }: AboutSectionProps) {
             className="relative w-full h-[480px] md:h-[560px] object-cover object-top rounded-3xl shadow-[0_20px_60px_rgba(2,112,113,0.15)]"
           />
           <div className="absolute -bottom-7 -right-4 md:-right-7 bg-white rounded-2xl shadow-xl px-6 py-5 border border-[#E8F4F4]">
-            <div className="playfair text-4xl font-bold text-primary leading-none">12+</div>
+            <div className="playfair text-4xl font-bold text-primary leading-none">19+</div>
             <div className="text-[11px] text-foreground/60 mt-2 leading-tight max-w-[100px]">
-              Years of Crafting Excellence
+              Tailored Designs for Every Occasion
             </div>
           </div>
         </div>
@@ -28,30 +28,33 @@ export function AboutSection({ onNavigate }: AboutSectionProps) {
         <div className="order-1 md:order-2">
           <SectionLabel align="left">Our Story</SectionLabel>
           <h2 className="playfair font-bold text-foreground leading-tight mb-6" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-            Crafting Dreams,<br />
-            <span className="italic text-primary">One Stitch at a Time</span>
+            Where Every Design,<br />
+            <span className="italic text-primary">Begins with You</span>
           </h2>
-          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.85] mb-5">
-            Founded in the heart of Hyderabad, Saru's Fashion Studio has been transforming how women experience fashion for over a decade. We believe every woman deserves clothing that celebrates her unique beauty, cultural heritage, and individual style.
+          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.9] mb-5">
+            At Saru's Fashion Studio, we believe every outfit should be as unique as the person wearing it. From elegant bridal blouses to custom ethnic wear, every design is thoughtfully tailored with precision, creativity, and attention to detail.
           </p>
-          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.85] mb-10">
-            From the intricate zardozi on a bridal lehenga to the precise drape of a silk saree blouse, we pour our passion into every stitch. Our experienced designers and master tailors ensure every outfit is not just beautiful — it's a perfect fit.
+
+          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.9] mb-10">
+            Our passion lies in creating timeless pieces that blend traditional craftsmanship with contemporary elegance. Whether it's a wedding, festive celebration, or a special occasion, we work closely with every client to bring their vision to life through personalized designs and impeccable tailoring.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mb-10">
             {ABOUT_STATS.map((stat, i) => (
-              <div key={i} className="bg-[#F0F8F8] rounded-2xl px-5 py-4">
+              <div key={i} className="bg-white border border-[#E8F4F4] rounded-2xl px-5 py-5 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div className="playfair text-2xl font-bold text-primary">{stat.value}</div>
                 <div className="text-[11px] text-foreground/55 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
-
+          <p className="text-sm text-foreground/60 italic mb-8">
+             Every stitch tells a story. Every design reflects your individuality.
+          </p>
           <button
             onClick={() => onNavigate("contact")}
             className="teal-gradient text-white font-semibold text-sm px-9 py-4 rounded-full hover:opacity-90 hover:shadow-lg transition-all hover:-translate-y-px"
           >
-            Schedule a Consultation
+            Book Your Consultation
           </button>
         </div>
       </div>

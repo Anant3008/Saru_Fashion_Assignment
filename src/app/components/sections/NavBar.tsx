@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import { BrandMark } from "@/app/components/shared/BrandMark";
-import { CONTACT, NAV_ITEMS } from "@/app/content/site";
+import { BrandMark } from "../shared/BrandMark";
+import { CONTACT, NAV_ITEMS } from "../../content/site";
 
 type NavBarProps = {
   onNavigate: (id: string) => void;
@@ -84,14 +84,14 @@ export function NavBar({ onNavigate }: NavBarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         scrolled
-          ? "bg-background/95 backdrop-blur-lg shadow-[0_2px_32px_rgba(15,107,109,0.10)]"
+          ? "bg-white/90 backdrop-blur-xl border-b border-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.06)]"
           : "bg-transparent"
       }`}
     >
 
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
 
 
         <button
@@ -111,7 +111,7 @@ export function NavBar({ onNavigate }: NavBarProps) {
             <button
               key={id}
               onClick={() => handleNavigate(id)}
-              className={`text-[13px] font-medium transition-colors ${
+              className={`relative group text-[14px] tracking-[0.08em] font-medium transition-all duration-300 ${
                 activeSection === id
                   ? "text-secondary"
                   : scrolled
@@ -120,6 +120,14 @@ export function NavBar({ onNavigate }: NavBarProps) {
               }`}
             >
               {label}
+
+              <span
+               className={`absolute left-0 -bottom-1 h-[2px] rounded-full bg-secondary transition-all duration-300 ${
+                activeSection === id
+                 ? "w-full"
+                 : "w-0 group-hover:w-full"
+               }`}
+              />
             </button>
 
           ))}
@@ -134,9 +142,9 @@ export function NavBar({ onNavigate }: NavBarProps) {
 
           <a
             href={`tel:${CONTACT.phone}`}
-            className={`text-[13px] font-medium flex items-center gap-1.5 transition-colors hover:text-secondary ${
+            className={`text-[14px] tracking-wide font-medium flex items-center gap-1.5 transition-colors hover:text-secondary ${
               scrolled
-                ? "text-primary"
+                ? "text-primary/80"
                 : "text-white/90"
             }`}
           >
@@ -153,7 +161,7 @@ export function NavBar({ onNavigate }: NavBarProps) {
             onClick={() =>
               handleNavigate("contact")
             }
-            className="taupe-gradient text-white text-[13px] font-semibold px-5 py-2.5 rounded-full hover:opacity-90 hover:shadow-lg transition-all hover:-translate-y-px"
+            className="taupe-gradient text-white text-[13px] font-semibold tracking-wide px-6 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
           >
             Book Appointment
           </button>
@@ -196,7 +204,7 @@ export function NavBar({ onNavigate }: NavBarProps) {
 
       {menuOpen && (
 
-        <div className="lg:hidden bg-background border-t border-muted shadow-xl">
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-black/5 rounded-b-3xl shadow-2xl">
 
           <div className="px-6 py-5 flex flex-col gap-4">
 
@@ -208,7 +216,7 @@ export function NavBar({ onNavigate }: NavBarProps) {
                 onClick={() =>
                   handleNavigate(id)
                 }
-                className={`text-left text-sm font-medium transition-colors py-1 border-b border-muted last:border-0 ${
+                className={`text-left text-base tracking-wide font-medium transition-all py-3 border-b border-black/5 last:border-0 ${
                   activeSection === id
                     ? "text-secondary"
                     : "text-foreground hover:text-primary"
@@ -220,14 +228,19 @@ export function NavBar({ onNavigate }: NavBarProps) {
             ))}
 
 
+          <hr className="border-black/5 my-2" />
+
+            <p className="text-center text-xs text-muted-foreground">
+              Looking for a custom-designed outfit?
+            </p>
 
             <button
               onClick={() =>
                 handleNavigate("contact")
               }
-              className="taupe-gradient text-white text-sm font-semibold px-6 py-3.5 rounded-full mt-2 text-center"
+              className="taupe-gradient text-white text-sm font-semibold tracking-wide px-6 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
             >
-              Book Appointment
+              Book your Appointment
             </button>
 
 
