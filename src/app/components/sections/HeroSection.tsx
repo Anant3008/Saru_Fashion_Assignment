@@ -1,5 +1,5 @@
 import { unsplash } from "@/app/content/site";
-import heroImage from "../../../../Collections/I.jpeg";
+import heroImage from "../../../../assets/Hero.jpeg";
 
 type HeroSectionProps = {
   onNavigate: (id: string) => void;
