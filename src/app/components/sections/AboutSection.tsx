@@ -1,6 +1,6 @@
 import { ABOUT_STATS, unsplash } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
-import aboutImage from "../../../../Collections/J.jpeg";
+import aboutImage from "../../../../assets/Our-story.jpeg";
 
 type AboutSectionProps = {
   onNavigate: (id: string) => void;

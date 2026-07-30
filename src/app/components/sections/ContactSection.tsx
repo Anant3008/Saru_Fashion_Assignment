@@ -383,7 +383,7 @@ export function ContactSection() {
                   />
                 </div>
 
-                <button type="submit" disabled={loading} className="w-full teal-gradient text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed">
+                <button type="submit" disabled={loading} className="w-full bg-primary text-white font-semibold text-sm py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed">
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
                       <LoaderCircle className="w-5 h-5 animate-spin" />
