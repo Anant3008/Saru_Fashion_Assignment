@@ -2,220 +2,130 @@
 
 :root {
   --font-size: 16px;
-
-  /* Base */
-  --background: #FBF7F2;
-  --foreground: #2B2927;
-
-
-  /* Cards */
-  --card: #FFFFFF;
-  --card-foreground: #2B2927;
-
-  --popover: #FFFFFF;
-  --popover-foreground: #2B2927;
-
-
-  /* Brand Colors */
-  --primary: #0F6B6D;
-  --primary-foreground: #FFFFFF;
-
-  /* Warm Taupe */
-  --secondary: #B8A08A;
-  --secondary-foreground: #2B2927;
-
-
-  /* Supporting Colors */
-  --muted: #EFE6DC;
-  --muted-foreground: #6E6258;
-
-  --accent: #E4D5C4;
-  --accent-foreground: #0F6B6D;
-
-
-  /* Status */
-  --destructive: #B42318;
-  --destructive-foreground: #FFFFFF;
-
-
-  /* Borders */
-  --border: rgba(15, 107, 109, 0.12);
-
-  --input: transparent;
-  --input-background: #FFFDFC;
-
-  --switch-background: #D8CEC3;
-
-
-  /* Typography */
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-
-
-  /* Focus */
-  --ring: #B8A08A;
-
-
-  /* Charts */
-  --chart-1: #0F6B6D;
-  --chart-2: #B8A08A;
-  --chart-3: #D8C3A5;
-  --chart-4: #6E8F8F;
-  --chart-5: #8A7565;
-
-
-  /* Radius */
-  --radius: 1rem;
-
-
-  /* Sidebar */
-  --sidebar: #FCF8F3;
-  --sidebar-foreground: #2B2927;
-
-  --sidebar-primary: #0F6B6D;
-  --sidebar-primary-foreground: #FFFFFF;
-
-  --sidebar-accent: #EFE6DC;
-  --sidebar-accent-foreground: #0F6B6D;
-
-  --sidebar-border: rgba(184, 160, 138, 0.25);
-  --sidebar-ring: #B8A08A;
 }
 
+/* Dark Mode Tokens (Luxury Charcoal & Rose Champagne) */
+html.dark, :root {
+  --background: #1A1A1A;
+  --alt-bg: #161616;
+  --card-bg: #242424;
+  --card-border: rgba(226, 180, 154, 0.2);
+  --card-hover-border: rgba(226, 180, 154, 0.5);
 
+  --primary-heading: #FFFFFF;
+  --section-heading: #F5F5F5;
+  --body-text: #D1D1D1;
+  --secondary-text: #A3A3A3;
+  --caption-text: #8E8E8E;
 
-.dark {
-  --background: #162626;
-  --foreground: #F7F1EA;
+  --accent-primary: #E2B49A;
+  --accent-supporting: #C88D75;
+  --accent-hover: #C88D75;
 
+  --nav-glass-top: rgba(26, 26, 26, 0.4);
+  --nav-glass-scrolled: rgba(20, 20, 20, 0.78);
+  --nav-border: rgba(226, 180, 154, 0.25);
+  --nav-glow: rgba(226, 180, 154, 0.2);
 
-  --card: #203131;
-  --card-foreground: #F7F1EA;
+  /* Hero rendering is handled per-theme in HeroSection.tsx via useTheme() */
 
-  --popover: #203131;
-  --popover-foreground: #F7F1EA;
-
-
-  /* Brand Colors */
-  --primary: #5FA8AA;
-  --primary-foreground: #162626;
-
-  --secondary: #C4AD96;
-  --secondary-foreground: #162626;
-
-
-  --muted: #293A3A;
-  --muted-foreground: #C9BFB5;
-
-  --accent: #3B4745;
-  --accent-foreground: #C4AD96;
-
-
-  --border: rgba(255,255,255,0.12);
-
-  --input: #293A3A;
-
-  --ring: #C4AD96;
+  --input-bg: #1E1E1E;
+  --ring: #E2B49A;
+  --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+/* Premium Light Mode Tokens (Luxury Ivory Linen & Rose Bronze - Rich Visual Depth) */
+html.light {
+  --background: #F8F5F0;          /* Warm Ivory Silk */
+  --alt-bg: #F1ECE3;              /* Luxury Cream Sandstone */
+  --card-bg: #FDFAF6;             /* Warm Ivory Porcelain (slight warmth, not pure white) */
+  --card-border: rgba(184, 123, 94, 0.2);
+  --card-hover-border: rgba(184, 123, 94, 0.5);
+
+  --primary-heading: #1C1917;     /* Deep Warm Charcoal */
+  --section-heading: #292524;     /* Rich Espresso Charcoal */
+  --body-text: #44403C;            /* Warm Charcoal Body Text */
+  --secondary-text: #78716C;       /* Soft Muted Gray */
+  --caption-text: #A8A29E;
+
+  --accent-primary: #B87B5E;      /* Warm Rose Bronze */
+  --accent-supporting: #965B3E;   /* Deep Bronze */
+  --accent-hover: #965B3E;
+
+  --nav-glass-top: rgba(248, 245, 240, 0.65);
+  --nav-glass-scrolled: rgba(255, 255, 255, 0.88);
+  --nav-border: rgba(184, 123, 94, 0.25);
+  --nav-glow: rgba(184, 123, 94, 0.22);
+
+  /* Hero rendering is handled per-theme in HeroSection.tsx via useTheme() */
+
+  --input-bg: #F4EFE7;
+  --ring: #B87B5E;
+  --shadow-color: rgba(184, 123, 94, 0.1);
+}
+
+/* Apple Liquid Glass Animations & Styles */
+.liquid-glass-nav {
+  transition: background-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              padding 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-pill {
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animated Soft Glow Effect around Liquid Glass Navbar */
+@keyframes liquidGlowPulse {
+  0%, 100% {
+    box-shadow: 0 8px 32px var(--shadow-color), 0 0 20px var(--nav-glow);
+  }
+  50% {
+    box-shadow: 0 12px 48px var(--shadow-color), 0 0 35px var(--nav-glow);
+  }
+}
+
+.liquid-nav-glow {
+  animation: liquidGlowPulse 6s ease-in-out infinite;
+}
+
+/* Global Theme Smooth Transitions */
+body, section, header, footer, div, article, input, select, textarea, button, p, span, h1, h2, h3, h4, h5, h6, a {
+  transition: background-color 300ms ease-out, border-color 300ms ease-out, color 300ms ease-out, box-shadow 300ms ease-out;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--card-border);
+    outline-color: var(--ring);
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--body-text);
   }
-
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
 
   html {
     font-size: var(--font-size);
   }
 
   h1 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    color: var(--primary-heading);
   }
 
   h2 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+    color: var(--section-heading);
   }
 
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+  h3, h4 {
+    color: var(--primary-heading);
   }
 
-  h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  label {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  button {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  input {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
+  p {
+    color: var(--body-text);
   }
 }

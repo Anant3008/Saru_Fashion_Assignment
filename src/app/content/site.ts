@@ -71,7 +71,7 @@ export const MAPS_OPEN_URL = "https://maps.app.goo.gl/Zb9ibAGTXeFxH5A79";
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
-  { label: "Services", id: "services" },
+  { label: "Design Expertise", id: "services" },
   { label: "Gallery", id: "gallery" },
   { label: "Testimonials", id: "testimonials" },
   { label: "Contact", id: "contact" },
@@ -86,8 +86,8 @@ export const SERVICES: ServiceItem[] = [
   {
     icon: Scissors,
     title: "Blouse & Lehenga Fabrics",
-    desc: "Premium fabrics selected for flawless drape, comfort, and custom stitching across everyday and occasion wear.",
-    badge: "Custom Stitching",
+    desc: "Premium fabrics selected for flawless drape, comfort, and tailored precision across everyday and occasion wear.",
+    badge: "Handcrafted",
     image: {
       src: new URL("../../../Images/C.jpg", import.meta.url).href,
       alt: "Blouse and lehenga fabrics with detailed embroidery work",
@@ -97,7 +97,7 @@ export const SERVICES: ServiceItem[] = [
     icon: Sparkles,
     title: "Designer Sarees & Lehengas",
     desc: "Elegant silhouettes, rich textures, and festive drapes tailored for standout celebrations and special events.",
-    badge: "Signature",
+    badge: "Occasion Wear",
     image: {
       src: new URL("../../../Images/B.jpg", import.meta.url).href,
       alt: "Designer lehenga with ornate embellished waist detailing",
@@ -107,7 +107,7 @@ export const SERVICES: ServiceItem[] = [
     icon: Shirt,
     title: "Bridal Blouses",
     desc: "Statement bridal blouses with refined finishing, supportive fits, and intricate detailing for wedding looks.",
-    badge: "Bridal",
+    badge: "Bridal Wear",
     image: {
       src: new URL("../../../Images/E.jpg", import.meta.url).href,
       alt: "Bridal blouse fabric with decorative border and embroidery",
@@ -131,16 +131,16 @@ export const TESTIMONIALS: TestimonialItem[] = [
     location: "Hyderabad",
     initials: "AC",
     rating: 5,
-    text: "Saru's Fashions offers excellent fitting and custom tailoring. The quality of their service is exceptional, and they also offer design consultation.",
-    tag: "Custom Tailoring",
+    text: "Saru's Fashions offers excellent fitting and personalized design. The quality of their craftsmanship is exceptional, and they also offer design consultation.",
+    tag: "Personalized Design",
   },
   {
     name: "Saru's Fashion Studio",
     location: "Hyderabad",
     initials: "SF",
     rating: 5,
-    text: "From personalised design consultations to made-to-measure outfits, every piece is created with attention to detail and a focus on your individual style.",
-    tag: "Personalised Design",
+    text: "From personalized design consultations to made-to-measure outfits, every piece is created with attention to detail and a focus on your individual style.",
+    tag: "Personalized Design",
   },
   {
     name: "Saru's Fashion Studio",
@@ -148,7 +148,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     initials: "SF",
     rating: 5,
     text: "Discover thoughtfully crafted Indian wear, bridal outfits, and occasion wear designed to bring your vision to life with detailed craftsmanship.",
-    tag: "Designer Wear",
+    tag: "Bridal & Occasion Wear",
   },
 ];
 
@@ -182,8 +182,8 @@ export const TRUST_STATS: TrustStat[] = [
 
 export const ABOUT_STATS = [
   { value: "1,000+", label: "Happy Clients" },
-  { value: "50+", label: "Bridal Collections" },
-  { value: "100%", label: "Custom Stitching" },
+  { value: "50+", label: "Bridal Creations" },
+  { value: "100%", label: "Personalized Design" },
   { value: "4.7 ★", label: "Google Rating" },
 ];
 
