@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ThemeProvider } from "@/app/context/ThemeContext";
 import { NavBar } from "@/app/components/sections/NavBar";
 import { HeroSection } from "@/app/components/sections/HeroSection";
 import { TrustBar } from "@/app/components/sections/TrustBar";
@@ -11,13 +12,13 @@ import { BookingCtaSection } from "@/app/components/sections/BookingCtaSection";
 import { ContactSection } from "@/app/components/sections/ContactSection";
 import { Footer } from "@/app/components/sections/Footer";
 import { FloatingWhatsApp } from "@/app/components/sections/FloatingWhatsApp";
+import { BackToTop } from "@/app/components/shared/BackToTop";
 import saruLogo from "@/imports/saru_fashion.jpg";
-import { BackToTop } from "./components/shared/BackToTop";
 
-export default function App() {
+function MainContent() {
   useEffect(() => {
     document.body.style.overflow = "";
-    document.title = "Saru's Fashion Studio";
+    document.title = "Saru's Fashion Studio | Luxury Boutique";
 
     const iconId = "saru-favicon";
     let link = document.querySelector<HTMLLinkElement>(`link#${iconId}`);
@@ -42,57 +43,53 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFDFB] text-foreground overflow-x-hidden" style={{ fontFamily: "'Poppins', sans-serif" }}>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--body-text)] overflow-x-hidden w-full max-w-[100vw]" style={{ fontFamily: "'Poppins', sans-serif" }}>
       <style>{`
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(2,112,113,0.28); border-radius: 3px; }
+        html {
+          scroll-behavior: smooth;
+          scroll-padding-top: 90px;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--background); }
+        ::-webkit-scrollbar-thumb { background: rgba(226,180,154,0.35); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(226,180,154,0.6); }
         .playfair { font-family: 'Playfair Display', serif; }
         .masonry-grid {
-          column-count: 2;
+          column-count: 1;
           column-gap: 16px;
         }
-        @media (min-width: 640px) { .masonry-grid { column-count: 3; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
+        @media (min-width: 480px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 768px) { .masonry-grid { column-count: 3; } }
+        @media (min-width: 1280px) { .masonry-grid { column-count: 4; } }
         .masonry-item {
-          display: block;
-          width: 100%;
-          margin-bottom: 16px;
           break-inside: avoid;
+          margin-bottom: 16px;
         }
-        .masonry-card { display: block; width: 100%; height: auto; }
-        .hero-pattern {
-          background-image: repeating-linear-gradient(
-            45deg,
-            rgba(200,169,106,0.07) 0,
-            rgba(200,169,106,0.07) 1px,
-            transparent 0,
-            transparent 50%
-          );
-          background-size: 14px 14px;
-        }
-        .taupe-gradient { background: linear-gradient(135deg, #B8A08A, #D8C3A5); }
-        .teal-gradient { background: linear-gradient(135deg, primary, 0%, #015859 100%); }
-        .charcoal-section { background: #1E2A2A; }
-        .teal-gradient-deep { background: #1E2A2A; }
-        @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
-        .float-anim { animation: float 3s ease-in-out infinite; }
       `}</style>
 
       <NavBar onNavigate={navigateTo} />
-      <HeroSection onNavigate={navigateTo} />
-      <TrustBar />
-      <AboutSection onNavigate={navigateTo} />
-      <ServicesSection />
-      <GallerySection />
-      <TestimonialsSection />
-      <WhyChooseUsSection />
-      <BookingCtaSection onNavigate={navigateTo} />
-      <ContactSection />
+      <main>
+        <HeroSection onNavigate={navigateTo} />
+        <TrustBar />
+        <AboutSection onNavigate={navigateTo} />
+        <ServicesSection />
+        <GallerySection />
+        <WhyChooseUsSection />
+        <TestimonialsSection />
+        <BookingCtaSection onNavigate={navigateTo} />
+        <ContactSection />
+      </main>
       <Footer onNavigate={navigateTo} />
       <FloatingWhatsApp />
       <BackToTop />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <MainContent />
+    </ThemeProvider>
   );
 }

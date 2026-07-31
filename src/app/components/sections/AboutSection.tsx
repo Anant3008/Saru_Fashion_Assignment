@@ -1,5 +1,6 @@
-import { ABOUT_STATS, unsplash } from "@/app/content/site";
+import { ABOUT_STATS } from "@/app/content/site";
 import { SectionLabel } from "@/app/components/shared/SectionLabel";
+import { useStaggerReveal } from "@/app/hooks/useScrollReveal";
 import aboutImage from "../../../../assets/Our-story.jpeg";
 
 type AboutSectionProps = {
@@ -7,51 +8,58 @@ type AboutSectionProps = {
 };
 
 export function AboutSection({ onNavigate }: AboutSectionProps) {
+  const sectionRef = useStaggerReveal<HTMLElement>();
+
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#FAFDFB]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-14 lg:gap-20 items-center">
-        <div className="relative order-2 md:order-1">
-          <div className="absolute -top-5 -left-5 w-full h-full border-2 border-secondary/55 rounded-3xl pointer-events-none" />
+    <section ref={sectionRef} id="about" className="relative py-20 sm:py-28 bg-[var(--background)] overflow-hidden w-full">
+      {/* Background glow gradient */}
+      <div className="absolute top-1/3 -left-20 w-64 sm:w-80 h-64 sm:h-80 bg-[var(--ring)]/8 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        <div data-reveal className="relative order-2 lg:order-1 max-w-lg lg:max-w-none mx-auto w-full">
+          <div className="absolute -top-4 sm:-top-5 -left-4 sm:-left-5 w-full h-full border-2 border-[var(--ring)]/35 rounded-3xl pointer-events-none" />
           <img
             src={aboutImage}
-            alt="Bridal wear craftsmanship at Saru's Fashion Studio, Hyderabad"
-            className="relative w-full h-[480px] md:h-[560px] object-cover object-top rounded-3xl shadow-[0_20px_60px_rgba(2,112,113,0.15)]"
+            alt="Handcrafted bridal wear craftsmanship at Saru's Fashion Studio, Hyderabad"
+            className="relative w-full h-[340px] sm:h-[480px] lg:h-[560px] object-cover object-top rounded-3xl shadow-2xl border border-[var(--card-border)]"
+            loading="lazy"
           />
-          <div className="absolute -bottom-7 -right-4 md:-right-7 bg-white rounded-2xl shadow-xl px-6 py-5 border border-[#E8F4F4]">
-            <div className="playfair text-4xl font-bold text-primary leading-none">12+</div>
-            <div className="text-[11px] text-foreground/60 mt-2 leading-tight max-w-[100px]">
+          <div className="absolute -bottom-5 sm:-bottom-7 -right-2 sm:-right-6 bg-[var(--card-bg)] rounded-2xl shadow-2xl px-5 sm:px-6 py-4 sm:py-5 border border-[var(--card-border)] backdrop-blur-md">
+            <div className="playfair text-3xl sm:text-4xl font-bold text-[var(--ring)] leading-none">12+</div>
+            <div className="text-[10px] sm:text-[11px] text-[var(--secondary-text)] mt-1.5 sm:mt-2 leading-tight max-w-[90px] sm:max-w-[100px]">
               Years of Crafting Excellence
             </div>
           </div>
         </div>
 
-        <div className="order-1 md:order-2">
-          <SectionLabel align="left">Our Story</SectionLabel>
-          <h2 className="playfair font-bold text-foreground leading-tight mb-6" style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-            Crafting Dreams,<br />
-            <span className="italic text-primary">One Stitch at a Time</span>
+        <div className="order-1 lg:order-2">
+          <SectionLabel data-reveal align="left">OUR STORY</SectionLabel>
+          <h2 data-reveal className="playfair font-bold text-[var(--section-heading)] leading-tight mb-5 sm:mb-6" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}>
+            Where Every Design<br />
+            <span className="italic text-[var(--ring)]">Begins with You</span>
           </h2>
-          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.85] mb-5">
-            Founded in the heart of Hyderabad, Saru's Fashion Studio has been transforming how women experience fashion for over a decade. We believe every woman deserves clothing that celebrates her unique beauty, cultural heritage, and individual style.
+          <p data-reveal className="text-[var(--body-text)] text-sm md:text-[15px] leading-[1.85] mb-4 sm:mb-5">
+            At Saru's Fashion Studio, we believe every outfit should be as unique as the person wearing it. Every design is thoughtfully tailored with precision, creativity, and attention to detail.
           </p>
-          <p className="text-foreground/65 text-sm md:text-[15px] leading-[1.85] mb-10">
-            From the intricate zardozi on a bridal lehenga to the precise drape of a silk saree blouse, we pour our passion into every stitch. Our experienced designers and master tailors ensure every outfit is not just beautiful — it's a perfect fit.
+          <p data-reveal className="text-[var(--body-text)] text-sm md:text-[15px] leading-[1.85] mb-8 sm:mb-10">
+            From bridal wear to festive and occasion outfits, we work closely with every client to create designs that celebrate personal style while preserving the beauty of traditional craftsmanship.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 mb-10">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10">
             {ABOUT_STATS.map((stat, i) => (
-              <div key={i} className="bg-[#F0F8F8] rounded-2xl px-5 py-4">
-                <div className="playfair text-2xl font-bold text-primary">{stat.value}</div>
-                <div className="text-[11px] text-foreground/55 mt-1">{stat.label}</div>
+              <div data-reveal key={i} className="bg-[var(--card-bg)] rounded-2xl px-4 sm:px-5 py-3.5 sm:py-4 border border-[var(--card-border)] hover:border-[var(--card-hover-border)] transition-colors shadow-md">
+                <div className="playfair text-xl sm:text-2xl font-bold text-[var(--ring)]">{stat.value}</div>
+                <div className="text-[10px] sm:text-[11px] text-[var(--secondary-text)] mt-1 truncate">{stat.label}</div>
               </div>
             ))}
           </div>
 
           <button
+            data-reveal
             onClick={() => onNavigate("contact")}
-            className="teal-gradient text-white font-semibold text-sm px-9 py-4 rounded-full hover:opacity-90 hover:shadow-lg transition-all hover:-translate-y-px"
+            className="bg-[var(--ring)] text-[#1A1A1A] font-semibold text-sm px-8 sm:px-9 py-3.5 sm:py-4 min-h-[48px] rounded-full hover:bg-[var(--accent-supporting)] hover:text-[#FFFFFF] hover:shadow-[0_8px_25px_var(--ring)] transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto text-center justify-center flex items-center shadow-lg"
           >
-            Schedule a Consultation
+            Book Your Consultation
           </button>
         </div>
       </div>
